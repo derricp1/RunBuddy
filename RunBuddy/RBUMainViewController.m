@@ -1,29 +1,20 @@
 //
-//  RBURunViewController.m
+//  RBUMainViewController.m
 //  RunBuddy
 //
 //  Created by Patrick D'Errico on 6/17/14.
 //  Copyright (c) 2014 derricp1. All rights reserved.
 //
 
-#import "RBURunViewController.h"
+#import "RBUMainViewController.h"
 
-@interface RBURunViewController ()
-    @property RBURunHelper *rh;
-    @property int segmentticks;
-    @property int currentsteps;
-    @property int currentdistance;
-    @property NSMutableArray *xdata;
-    @property NSMutableArray *ydata;
-    @property NSMutableArray *zdata;
-    @property CMMotionManager *motion;
-    @property NSTimer *timer;
-
-    //@property UIAccelerometer *accel;
+@interface RBUMainViewController ()
+    @property float delay;
+    @property float segmentsize;
 
 @end
 
-@implementation RBURunViewController
+@implementation RBUMainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,10 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _motion = [[CMMotionManager alloc] init];
-    [_motion startAccelerometerUpdates];
-    
-    //set up timer
     
     // Do any additional setup after loading the view.
 }
@@ -49,6 +36,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    /*if (sender != self.doneButton) return;
+    if (self.textField.text.length > 0) {
+        self.toDoItem = [[ToDoItem alloc] init];
+        self.toDoItem.itemName = self.textField.text;
+        self.toDoItem.completed = NO;
+    }*/
+    //self.delay = 0; //okay...
 }
 
 /*
@@ -62,21 +59,11 @@
 }
 */
 
-/*
- - (IBAction)goToRunView:(UIStoryboardSegue *)segue
-{
-    
-}
-*/
-
--(void)setupstats
-{
-    _segmentticks = 0;
-    _currentdistance = 0;
-    _currentsteps = 0;
-    [_xdata removeAllObjects];
-    [_ydata removeAllObjects];
-    [_zdata removeAllObjects];
+- (IBAction)segmentTime:(UISlider *)sender {
+    _segmentsize = sender.value;
 }
 
+- (IBAction)delay:(UISlider *)sender {
+    _delay = sender.value;
+}
 @end

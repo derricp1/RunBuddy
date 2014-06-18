@@ -2,7 +2,7 @@
 //  RBUAppDelegate.m
 //  RunBuddy
 //
-//  Created by Patrick D'Errico on 6/16/14.
+//  Created by Patrick D'Errico on 6/17/14.
 //  Copyright (c) 2014 derricp1. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
-    //self.window makeKeyAndVisible];
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 
