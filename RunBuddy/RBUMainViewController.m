@@ -28,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _delay = 10;
+    _segmentsize = 20;
     
     // Do any additional setup after loading the view.
 }
@@ -39,13 +41,11 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    /*if (sender != self.doneButton) return;
-    if (self.textField.text.length > 0) {
-        self.toDoItem = [[ToDoItem alloc] init];
-        self.toDoItem.itemName = self.textField.text;
-        self.toDoItem.completed = NO;
-    }*/
-    //self.delay = 0; //okay...
+    _delay = floor(_delay);
+    _segmentsize = floor(_segmentsize);
+    RBURunViewController *dest = segue.destinationViewController;
+    dest.segmentsize = (int)_segmentsize;
+    dest.delay = (int)_delay;
 }
 
 /*
@@ -58,12 +58,23 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)segmentTime:(UISlider *)sender {
-    _segmentsize = sender.value;
+- (IBAction)SegmentTimeChanged:(id)sender {
+    self.SegmentLabel.text = [NSString stringWithFormat:@"%f", self.SegmentSlider.value];
+    _segmentsize = self.SegmentSlider.value;
+}
+- (IBAction)DelayChanged:(id)sender {
+    self.DelayLabel.text = [NSString stringWithFormat:@"%f", self.DelaySlider.value];
+    _delay = self.DelaySlider.value;
 }
 
-- (IBAction)delay:(UISlider *)sender {
-    _delay = sender.value;
+- (IBAction)unwindFromRun:(UIStoryboardSegue *)segue
+{
+    
 }
+
+- (IBAction)unwindFromResults:(UIStoryboardSegue *)segue
+{
+    
+}
+ 
 @end

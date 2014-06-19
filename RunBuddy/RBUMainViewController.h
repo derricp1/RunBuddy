@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RBURunViewController.h"
 
 @interface RBUMainViewController : UIViewController
-- (IBAction)segmentTime:(UISlider *)sender;
-- (IBAction)delay:(UISlider *)sender;
+    @property (weak, nonatomic) IBOutlet UISlider *SegmentSlider;
+    @property (weak, nonatomic) IBOutlet UILabel *SegmentLabel;
+    @property (weak, nonatomic) IBOutlet UISlider *DelaySlider;
+    @property (weak, nonatomic) IBOutlet UILabel *DelayLabel;
+
+- (IBAction)unwindFromRun:(UIStoryboardSegue *)segue;
+- (IBAction)unwindFromResults:(UIStoryboardSegue *)segue;
 @end

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RBURunHelper.h"
+#import "RBUMainViewController.h"
 #import <CoreMotion/CoreMotion.h>
 
 @interface RBURunViewController : UIViewController
 - (void)setupstats;
+    @property int segmentsize;
+    @property int delay;
 @end
