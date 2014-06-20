@@ -12,7 +12,9 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface RBURunViewController : UIViewController
-- (void)setupstats;
+    - (void)setupstats;
+    - (void)timerFired:(NSTimer*) t;
+    - (void)motionTimerFired:(NSTimer*) t;
     @property int segmentsize;
     @property int delay;
 @end

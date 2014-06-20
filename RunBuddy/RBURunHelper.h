@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface RBURunHelper : NSObject
-    @property (retain) NSNumber* totalticks;
-    @property (retain) NSNumber* totallaps;
+    @property int totalticks; //motion data
+    @property int totallaps;
     @property (retain) NSMutableArray* laptimes;
 
-    @property (retain) NSNumber* totalsegments;
+    @property int totalsegments;
     @property (retain) NSMutableArray* fullsegmentmotiontotal;
     @property (retain) NSMutableArray* fullsegmentspeed;
 @end
