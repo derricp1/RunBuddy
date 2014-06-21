@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface RBURunHelper : NSObject
-    @property int totalticks; //motion data
-    @property int totallaps;
+    @property int totalticks; //amount of total distance, so this math in the oncreate
+
+    @property int totallaps; //do in lap button, also manage lap times
     @property (retain) NSMutableArray* laptimes;
 
     @property int totalsegments;

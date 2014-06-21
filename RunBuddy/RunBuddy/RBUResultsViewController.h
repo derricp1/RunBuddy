@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RBURunHelper.h"
 
 @interface RBUResultsViewController : UIViewController
-
+    @property RBURunHelper* rh;
 @end
