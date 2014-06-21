@@ -59,12 +59,16 @@
 }
 */
 - (IBAction)SegmentTimeChanged:(id)sender {
-    self.SegmentLabel.text = [NSString stringWithFormat:@"%f", self.SegmentSlider.value];
     _segmentsize = self.SegmentSlider.value;
+    int temp = floor(_segmentsize);
+    self.SegmentLabel.text = [NSString stringWithFormat:@"%i", temp];
+    
 }
 - (IBAction)DelayChanged:(id)sender {
-    self.DelayLabel.text = [NSString stringWithFormat:@"%f", self.DelaySlider.value];
     _delay = self.DelaySlider.value;
+    int temp = floor(_delay);
+    self.DelayLabel.text = [NSString stringWithFormat:@"%i", temp];
+
 }
 
 - (IBAction)unwindFromRun:(UIStoryboardSegue *)segue

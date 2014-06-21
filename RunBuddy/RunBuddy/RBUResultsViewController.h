@@ -11,4 +11,16 @@
 
 @interface RBUResultsViewController : UIViewController
     @property RBURunHelper* rh;
+
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar1;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar2;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar3;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar4;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar5;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar6;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar7;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar8;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar9;
+    @property (weak, nonatomic) IBOutlet UIImageView *Bar10;
+
 @end

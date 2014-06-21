@@ -16,6 +16,8 @@
     @property double currentdistance;
     @property double motionlevel; //floor for motion
 
+    @property int thislapticks;
+
     @property NSMutableArray *xdata;
     @property NSMutableArray *ydata;
     @property NSMutableArray *zdata;
@@ -78,10 +80,13 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    RBURunViewController *dest = segue.destinationViewController;
-    dest.rh = _rh;
-    [_motiontimer invalidate];
-    [_timer invalidate];
+    if ([segue.destinationViewController isKindOfClass:[RBURunViewController class]])
+    {
+        RBURunViewController *dest = segue.destinationViewController;
+        dest.rh = _rh;
+        [_motiontimer invalidate];
+        [_timer invalidate];
+    }
 }
 
 /*
@@ -107,11 +112,21 @@
     _segmentticks = 0;
     _currentdistance = 0;
     _currentsteps = 0;
+    _thislapticks = 0;
     _motionlevel = 0.5;
     _xdata = [NSMutableArray new];
     _ydata = [NSMutableArray new];
     _zdata = [NSMutableArray new];
     _rh = [RBURunHelper new];
+}
+
+- (IBAction)pushedLap:(id)sender {
+    
+    if (_delayOver) {
+        _rh.totallaps += 1;
+        [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
+        _thislapticks = 0;
+    }
 }
 
 -(void)delayTimerFired:(NSTimer*) t
@@ -160,6 +175,8 @@
         [_xdata addObject:(id)[NSNumber numberWithDouble:accel.x]];
         [_ydata addObject:(id)[NSNumber numberWithDouble:accel.y]];
         [_zdata addObject:(id)[NSNumber numberWithDouble:accel.z]];
+        
+        _thislapticks += 1;
     
         if (_segmentticks > 1)
         {
@@ -175,7 +192,7 @@
              */
             if (([_zdata[_segmentticks-2] doubleValue] < _motionlevel && [_zdata[_segmentticks-1] doubleValue] >= _motionlevel) ||  ([_zdata[_segmentticks-2] doubleValue] > -_motionlevel && [_zdata[_segmentticks-1] doubleValue] <= -_motionlevel))
             {
-                //zcalculation
+                //zcalculation, needs to be tested though
                 if ([_zdata[_segmentticks-1] doubleValue] > 0) {
                     _currentdistance += (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
                 }
