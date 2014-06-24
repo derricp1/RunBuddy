@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RBURunViewController.h"
 
-@interface RBUMainViewController : UIViewController
+@interface RBUMainViewController : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
     @property (weak, nonatomic) IBOutlet UISlider *SegmentSlider;
     @property (weak, nonatomic) IBOutlet UILabel *SegmentLabel;
     @property (weak, nonatomic) IBOutlet UISlider *DelaySlider;

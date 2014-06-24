@@ -82,6 +82,12 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[RBURunViewController class]])
     {
+        if (_delayOver) { //end the current lap
+            _rh.totallaps += 1;
+            [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
+            _thislapticks = 0;
+        }
+        
         RBURunViewController *dest = segue.destinationViewController;
         dest.rh = _rh;
         [_motiontimer invalidate];
