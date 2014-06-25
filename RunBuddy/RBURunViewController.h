@@ -11,10 +11,13 @@
 #import "RBUMainViewController.h"
 #import <CoreMotion/CoreMotion.h>
 
-@interface RBURunViewController : UIViewController
+@interface RBURunViewController : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
     - (void)setupstats;
     - (void)timerFired:(NSTimer*) t;
     - (void)motionTimerFired:(NSTimer*) t;
     @property int segmentsize;
     @property int delay;
+
 @end

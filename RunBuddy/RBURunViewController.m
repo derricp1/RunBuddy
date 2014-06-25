@@ -47,6 +47,9 @@
 
 - (void)viewDidLoad
 {
+    [scroller setScrollEnabled:YES];
+    [scroller setContentSize:CGSizeMake(320,568)];
+    
     [super viewDidLoad];
     [self setupstats];
     _motion = [[CMMotionManager alloc] init];

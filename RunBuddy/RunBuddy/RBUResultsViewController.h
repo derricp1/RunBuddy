@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RBURunHelper.h"
 
-@interface RBUResultsViewController : UIViewController
+@interface RBUResultsViewController : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
     @property RBURunHelper* rh;
 
     @property (weak, nonatomic) IBOutlet UIImageView *Bar1;
