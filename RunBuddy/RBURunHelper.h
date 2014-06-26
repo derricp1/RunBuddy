@@ -13,6 +13,7 @@
 
     @property int totallaps; //do in lap button, also manage lap times
     @property (retain) NSMutableArray* laptimes;
+    @property (retain) NSMutableArray* lapdistances;
 
     @property int totalsegments;
     @property (retain) NSMutableArray* fullsegmentmotiontotal;

@@ -16,6 +16,8 @@
     @property double currentdistance;
     @property double motionlevel; //floor for motion
 
+    @property double lapdistance;
+
     @property int thislapticks;
 
     @property NSMutableArray *xdata;
@@ -134,7 +136,9 @@
     if (_delayOver) {
         _rh.totallaps += 1;
         [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
+        [_rh.lapdistances addObject:(id)[NSNumber numberWithInt:(_lapdistance)]]; //need lap distances at some point
         _thislapticks = 0;
+        _lapdistance = 0;
     }
 }
 
@@ -161,16 +165,19 @@
 
 -(void)segmentUpdate {
     
-    _segmentticks = 0;
-    _currentdistance = 0;
-    _currentsteps = 0;
     [_xdata removeAllObjects];
     [_ydata removeAllObjects];
     [_zdata removeAllObjects];
     
     _rh.totalsegments += 1;
     [_rh.fullsegmentmotiontotal addObject:(id)[NSNumber numberWithDouble:(_currentdistance)]];
-    [_rh.fullsegmentspeed addObject:(id)[NSNumber numberWithDouble:(_currentdistance/_segmentsize)]]; //feet per second
+    
+    
+    [_rh.fullsegmentspeed addObject:(id)[NSNumber numberWithDouble:((_currentdistance*3600)/(_segmentsize*5280))]]; //feet per second -> mph
+    
+    _segmentticks = 0;
+    _currentdistance = 0;
+    _currentsteps = 0;
     
 }
 
@@ -204,9 +211,11 @@
                 //zcalculation, needs to be tested though
                 if ([_zdata[_segmentticks-1] doubleValue] > 0) {
                     _currentdistance += (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
+                    _lapdistance += (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
                 }
                 else if ([_zdata[_segmentticks-1] doubleValue] < 0) {
                     _currentdistance += (3 + sqrt(-[_zdata[_segmentticks-1] doubleValue]));
+                    _lapdistance += (3 + sqrt(-[_zdata[_segmentticks-1] doubleValue]));
                 }
             
             }

@@ -237,6 +237,19 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.023573720190000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Speed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="032-eD-bdf">
+                                        <rect key="frame" x="20" y="70" width="93" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Xe-6d-1aE">
+                                        <rect key="frame" x="246" y="70" width="10" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -256,6 +269,7 @@
                         <outlet property="Bar7" destination="Ca0-nb-rNM" id="oIo-um-ypi"/>
                         <outlet property="Bar8" destination="bJa-Tk-Q1V" id="5Qe-jg-Pd7"/>
                         <outlet property="Bar9" destination="DL5-bf-3yC" id="Iu8-Dc-dfo"/>
+                        <outlet property="maxSpeedLabel" destination="6Xe-6d-1aE" id="ycg-Iu-keR"/>
                         <outlet property="scroller" destination="3aP-oe-fYW" id="XGD-WG-Ehm"/>
                     </connections>
                 </viewController>

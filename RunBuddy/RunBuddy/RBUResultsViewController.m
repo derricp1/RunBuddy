@@ -11,6 +11,7 @@
 @interface RBUResultsViewController ()
     @property int maxbar;
     @property NSMutableArray* levels;
+    @property double maxsegspeed;
 @end
 
 @implementation RBUResultsViewController
@@ -29,25 +30,78 @@
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320,568)];
     [super viewDidLoad];
+    [self setuplevels];
+    [self findmaxsegspeed];
     
     _maxbar = 200;
     
-    /*CGRect f1 = _Bar1.frame;
-    f1.size.height = 100;
-    f1.origin.y = f1.origin.y + (_maxbar - f1.size.height);
-    _Bar1.frame = f1;*/
-    
-    /*CGRect f2 = _Bar2.frame;
-    CGRect f3 = _Bar3.frame;
-    CGRect f4 = _Bar4.frame;
-    CGRect f5 = _Bar5.frame;
-    CGRect f6 = _Bar6.frame;
-    CGRect f7 = _Bar7.frame;
-    CGRect f8 = _Bar8.frame;
-    CGRect f9 = _Bar9.frame;
-    CGRect f10 = _Bar1.frame;*/
-    
     // Do any additional setup after loading the view.
+}
+
+- (void)findmaxsegspeed
+{
+    double curmax = 0;
+    for (int i=0; i<_rh.totalsegments; i++) {
+        if ([_rh.fullsegmentspeed[i] doubleValue] > curmax) {
+            curmax = [_rh.fullsegmentspeed[i] doubleValue];
+        }
+    }
+    _maxsegspeed = curmax;
+    NSString* tstring = [NSString stringWithFormat:@"%f", _maxsegspeed];
+    self.maxSpeedLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
+}
+
+- (void)setuplevels
+{
+    CGRect f1 = _Bar1.frame;
+    f1.size.height = [_levels[0] intValue];
+    f1.origin.y = f1.origin.y + (_maxbar - f1.size.height);
+    _Bar1.frame = f1;
+    
+    CGRect f2 = _Bar2.frame;
+    f2.size.height = [_levels[1] intValue];
+    f2.origin.y = f2.origin.y + (_maxbar - f2.size.height);
+    _Bar2.frame = f2;
+    
+    CGRect f3 = _Bar3.frame;
+    f3.size.height = [_levels[2] intValue];
+    f3.origin.y = f3.origin.y + (_maxbar - f3.size.height);
+    _Bar3.frame = f3;
+    
+    CGRect f4 = _Bar4.frame;
+    f4.size.height = [_levels[3] intValue];
+    f4.origin.y = f4.origin.y + (_maxbar - f4.size.height);
+    _Bar4.frame = f4;
+    
+    CGRect f5 = _Bar5.frame;
+    f5.size.height = [_levels[4] intValue];
+    f5.origin.y = f5.origin.y + (_maxbar - f5.size.height);
+    _Bar5.frame = f5;
+    
+    CGRect f6 = _Bar6.frame;
+    f6.size.height = [_levels[5] intValue];
+    f6.origin.y = f6.origin.y + (_maxbar - f6.size.height);
+    _Bar6.frame = f6;
+    
+    CGRect f7 = _Bar7.frame;
+    f7.size.height = [_levels[6] intValue];
+    f7.origin.y = f7.origin.y + (_maxbar - f7.size.height);
+    _Bar7.frame = f7;
+    
+    CGRect f8 = _Bar8.frame;
+    f8.size.height = [_levels[7] intValue];
+    f8.origin.y = f8.origin.y + (_maxbar - f8.size.height);
+    _Bar8.frame = f8;
+    
+    CGRect f9 = _Bar9.frame;
+    f9.size.height = [_levels[8] intValue];
+    f9.origin.y = f9.origin.y + (_maxbar - f9.size.height);
+    _Bar9.frame = f9;
+    
+    CGRect f10 = _Bar10.frame;
+    f10.size.height = [_levels[9] intValue];
+    f10.origin.y = f10.origin.y + (_maxbar - f10.size.height);
+    _Bar10.frame = f10;
 }
 
 - (void)didReceiveMemoryWarning
