@@ -12,6 +12,8 @@
     @property int maxbar;
     @property NSMutableArray* levels;
     @property double maxsegspeed;
+    @property double totaldistance;
+    @property double maxsegdistance;
 @end
 
 @implementation RBUResultsViewController
@@ -32,10 +34,30 @@
     [super viewDidLoad];
     [self setuplevels];
     [self findmaxsegspeed];
+    [self finddistancedata];
     
     _maxbar = 200;
     
     // Do any additional setup after loading the view.
+}
+
+- (void)finddistancedata
+{
+    _maxsegdistance = 0;
+    for (int i=0; i<_rh.totalsegments; i++) {
+        _totaldistance += [_rh.fullsegmentmotiontotal[i] doubleValue];
+        if ([_rh.fullsegmentmotiontotal[i] doubleValue] > _maxsegdistance) {
+            _maxsegdistance = [_rh.fullsegmentmotiontotal[i] doubleValue];
+        }
+    }
+    _maxsegdistance = _maxsegdistance/5280;
+    _totaldistance = _totaldistance/5280;
+    
+    NSString* tstring = [NSString stringWithFormat:@"%f", _maxsegdistance];
+    self.maxDistanceLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
+    
+    tstring = [NSString stringWithFormat:@"%f", _maxsegspeed];
+    self.maxSpeedLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
 }
 
 - (void)findmaxsegspeed

@@ -26,6 +26,9 @@
     @property (weak, nonatomic) IBOutlet UIImageView *Bar10;
 
     @property (weak, nonatomic) IBOutlet UILabel *maxSpeedLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *maxDistanceLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *totalDistanceLabel;
+
 
 
 @end
