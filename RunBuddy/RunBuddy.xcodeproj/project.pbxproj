@@ -24,6 +24,7 @@
 		8F25B60D19511FAE00FF7AB1 /* RBUMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F25B60C19511FAE00FF7AB1 /* RBUMainViewController.m */; };
 		8F25B6161951207300FF7AB1 /* RBUResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F25B6151951207300FF7AB1 /* RBUResultsViewController.m */; };
 		8F25B619195124CF00FF7AB1 /* RBURunHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F25B618195124CF00FF7AB1 /* RBURunHelper.m */; };
+		8FD7C354196261A50035C111 /* RBUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7C353196261A50035C111 /* RBUTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		8F25B6151951207300FF7AB1 /* RBUResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUResultsViewController.m; sourceTree = "<group>"; };
 		8F25B617195124CF00FF7AB1 /* RBURunHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURunHelper.h; sourceTree = "<group>"; };
 		8F25B618195124CF00FF7AB1 /* RBURunHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURunHelper.m; sourceTree = "<group>"; };
+		8FD7C352196261A50035C111 /* RBUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RBUTableViewController.h; path = RunBuddy/RBUTableViewController.h; sourceTree = "<group>"; };
+		8FD7C353196261A50035C111 /* RBUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RBUTableViewController.m; path = RunBuddy/RBUTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 		8F25B5BF19510A8400FF7AB1 = {
 			isa = PBXGroup;
 			children = (
+				8FD7C353196261A50035C111 /* RBUTableViewController.m */,
+				8FD7C352196261A50035C111 /* RBUTableViewController.h */,
 				8F25B617195124CF00FF7AB1 /* RBURunHelper.h */,
 				8F25B618195124CF00FF7AB1 /* RBURunHelper.m */,
 				8F25B60219511E5900FF7AB1 /* RBURunViewController.h */,
@@ -266,6 +271,7 @@
 			files = (
 				8F25B5DC19510A8400FF7AB1 /* RBUAppDelegate.m in Sources */,
 				8F25B619195124CF00FF7AB1 /* RBURunHelper.m in Sources */,
+				8FD7C354196261A50035C111 /* RBUTableViewController.m in Sources */,
 				8F25B60419511E5900FF7AB1 /* RBURunViewController.m in Sources */,
 				8F25B6161951207300FF7AB1 /* RBUResultsViewController.m in Sources */,
 				8F25B5D819510A8400FF7AB1 /* main.m in Sources */,
@@ -466,6 +472,7 @@
 				8F25B5F619510A8500FF7AB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F25B5F719510A8500FF7AB1 /* Build configuration list for PBXNativeTarget "RunBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +481,7 @@
 				8F25B5F919510A8500FF7AB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

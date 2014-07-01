@@ -7,6 +7,7 @@
 //
 
 #import "RBUResultsViewController.h"
+#import "RBUTableViewController.h"
 
 @interface RBUResultsViewController ()
     @property int maxbar;
@@ -14,6 +15,7 @@
     @property double maxsegspeed;
     @property double totaldistance;
     @property double maxsegdistance;
+    @property NSTimer* timer;
 @end
 
 @implementation RBUResultsViewController
@@ -31,14 +33,27 @@
 {
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320,568)];
+    
     [super viewDidLoad];
+    
     [self setuplevels];
-    [self findmaxsegspeed];
-    [self finddistancedata];
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
+                                                   target:self
+                                                 selector:@selector(timerFired:)
+                                                 userInfo:nil
+                                                  repeats:YES];
     
     _maxbar = 200;
     
     // Do any additional setup after loading the view.
+}
+
+-(void)timerFired:(NSTimer*) timer
+{
+    [self findmaxsegspeed];
+    [self finddistancedata];
+    [_timer invalidate];
 }
 
 - (void)finddistancedata
@@ -53,11 +68,13 @@
     _maxsegdistance = _maxsegdistance/5280;
     _totaldistance = _totaldistance/5280;
     
-    NSString* tstring = [NSString stringWithFormat:@"%f", _maxsegdistance];
-    self.maxDistanceLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
+    NSString* tstring = [NSString stringWithFormat:@"%.2f", _maxsegdistance];
+    [_maxDistanceLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
+    //self.maxDistanceLabel.text = [[NSString stringWithFormat:@"%f", _maxsegdistance] stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
     
-    tstring = [NSString stringWithFormat:@"%f", _maxsegspeed];
-    self.maxSpeedLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
+    NSString* ttstring = [NSString stringWithFormat:@"%.2f", _totaldistance];
+    [_maxSpeedLabel setText:[ttstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
+    //self.totalDistanceLabel.text = [[NSString stringWithFormat:@"%f", _totaldistance] stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
 }
 
 - (void)findmaxsegspeed
@@ -68,9 +85,9 @@
             curmax = [_rh.fullsegmentspeed[i] doubleValue];
         }
     }
-    _maxsegspeed = curmax;
-    NSString* tstring = [NSString stringWithFormat:@"%f", _maxsegspeed];
-    self.maxSpeedLabel.text = [tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
+    _maxsegspeed = ((int)(curmax * 10)) / 10;
+    NSString* tstring = [NSString stringWithFormat:@"%.2f", _maxsegspeed];
+    [_maxSpeedLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
 }
 
 - (void)setuplevels
@@ -185,6 +202,14 @@
             [_levels addObject:(id)[NSNumber numberWithInt:floor(200*(val/maxinseg))]];
             currentportion += portionsize;
         }
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[RBUTableViewController class]])
+    {
+        RBUResultsViewController *dest = segue.destinationViewController;
+        dest.rh = _rh;
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "RBURunViewController.h"
+#import "RBUResultsViewController.h"
 
 @interface RBURunViewController ()
     @property RBURunHelper *rh;
@@ -85,7 +86,7 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[RBURunViewController class]])
+    if ([segue.destinationViewController isKindOfClass:[RBUResultsViewController class]])
     {
         if (_delayOver) { //end the current lap
             _rh.totallaps += 1;
@@ -93,7 +94,7 @@
             _thislapticks = 0;
         }
         
-        RBURunViewController *dest = segue.destinationViewController;
+        RBUResultsViewController *dest = segue.destinationViewController;
         dest.rh = _rh;
         [_motiontimer invalidate];
         [_timer invalidate];
