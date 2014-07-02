@@ -44,28 +44,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return _rh.totallaps;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *ID = @"ListPrototypeCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     
     // Configure the cell...
+    int lt = [[_rh.laptimes objectAtIndex:indexPath.row] intValue];
+    double allseconds = lt/10;
+    int minutes = allseconds/60;
+    int seconds = allseconds - 60*minutes;
+    
+    cell.textLabel.text = [[NSString stringWithFormat:@"%i", minutes] stringByAppendingString:[@":" stringByAppendingString:[NSString stringWithFormat:@"%i", seconds]]];
+    
+    //cell.textLabel.text = [NSString stringWithFormat:@"%i", _rh.totallaps];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

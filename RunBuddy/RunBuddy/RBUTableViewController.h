@@ -10,5 +10,5 @@
 #import "RBURunHelper.h"
 
 @interface RBUTableViewController : UITableViewController
-    @property RBURunHelper* rh;
+    @property (strong) RBURunHelper* rh;
 @end

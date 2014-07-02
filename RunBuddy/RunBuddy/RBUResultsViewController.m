@@ -42,7 +42,7 @@
                                                    target:self
                                                  selector:@selector(timerFired:)
                                                  userInfo:nil
-                                                  repeats:YES];
+                                                  repeats:NO];
     
     _maxbar = 200;
     
@@ -53,7 +53,6 @@
 {
     [self findmaxsegspeed];
     [self finddistancedata];
-    [_timer invalidate];
 }
 
 - (void)finddistancedata

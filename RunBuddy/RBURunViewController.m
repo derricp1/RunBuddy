@@ -10,7 +10,7 @@
 #import "RBUResultsViewController.h"
 
 @interface RBURunViewController ()
-    @property RBURunHelper *rh;
+    @property (strong) RBURunHelper *rh;
 
     @property int segmentticks;
     @property int currentsteps;
@@ -126,10 +126,16 @@
     _currentsteps = 0;
     _thislapticks = 0;
     _motionlevel = 0.5;
-    _xdata = [NSMutableArray new];
-    _ydata = [NSMutableArray new];
-    _zdata = [NSMutableArray new];
-    _rh = [RBURunHelper new];
+    _xdata = [[NSMutableArray alloc] init];
+    _ydata = [[NSMutableArray alloc] init];
+    _zdata = [[NSMutableArray alloc] init];
+    _rh = [[RBURunHelper alloc] init];
+    
+    _rh.fullsegmentmotiontotal = [[NSMutableArray alloc] init];
+    _rh.fullsegmentspeed = [[NSMutableArray alloc] init];
+    _rh.lapdistances = [[NSMutableArray alloc] init];
+    _rh.laptimes = [[NSMutableArray alloc] init];
+
 }
 
 - (IBAction)pushedLap:(id)sender {
