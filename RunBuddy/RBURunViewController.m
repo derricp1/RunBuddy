@@ -91,6 +91,7 @@
         if (_delayOver) { //end the current lap
             _rh.totallaps += 1;
             [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
+            [_rh.lapdistances addObject:(id)[NSNumber numberWithInt:(_lapdistance)]];
             _thislapticks = 0;
         }
         

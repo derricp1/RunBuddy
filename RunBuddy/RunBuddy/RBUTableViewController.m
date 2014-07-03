@@ -64,7 +64,15 @@
     int minutes = allseconds/60;
     int seconds = allseconds - 60*minutes;
     
-    cell.textLabel.text = [[NSString stringWithFormat:@"%i", minutes] stringByAppendingString:[@":" stringByAppendingString:[NSString stringWithFormat:@"%i", seconds]]];
+    int ld = [[_rh.lapdistances objectAtIndex:indexPath.row] intValue];
+    double distance = (ld/5280);
+    
+    NSString* time = [[NSString stringWithFormat:@"%i", minutes] stringByAppendingString:[@":" stringByAppendingString:[NSString stringWithFormat:@"%i", seconds]]];
+    
+    NSString* dist = [@"          " stringByAppendingString:[NSString stringWithFormat:@"%.2f", distance]];
+    dist = [dist stringByAppendingString:@" miles"];
+    
+    cell.textLabel.text = [time stringByAppendingString:dist];
     
     //cell.textLabel.text = [NSString stringWithFormat:@"%i", _rh.totallaps];
     

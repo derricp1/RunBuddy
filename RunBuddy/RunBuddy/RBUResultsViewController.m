@@ -205,9 +205,11 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[RBUTableViewController class]])
+    //if ([segue.destinationViewController isKindOfClass:[RBUTableViewController class]])
+    if ([segue.identifier isEqualToString:@"GoToTVC"])
     {
-        RBUResultsViewController *dest = segue.destinationViewController;
+        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
+        RBUResultsViewController *dest = (RBUResultsViewController*) nav.topViewController;
         dest.rh = _rh;
     }
 }
