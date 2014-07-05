@@ -7,6 +7,7 @@
 //
 
 #import "RBUMainViewController.h"
+#import "RBURunViewController.h"
 
 @interface RBUMainViewController ()
     @property float delay;
@@ -44,11 +45,16 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _delay = floor(_delay);
-    _segmentsize = floor(_segmentsize);
-    RBURunViewController *dest = segue.destinationViewController;
-    dest.segmentsize = (int)_segmentsize;
-    dest.delay = (int)_delay;
+    if ([segue.identifier isEqualToString:@"GoToRunVC"])
+    {
+        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
+        RBURunViewController *dest = (RBURunViewController*) nav.topViewController;
+        
+        _delay = floor(_delay);
+        _segmentsize = floor(_segmentsize);
+        dest.segmentsize = (int)_segmentsize;
+        dest.delay = (int)_delay;
+    }
 }
 
 /*

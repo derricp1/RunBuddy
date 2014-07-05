@@ -86,8 +86,11 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[RBUResultsViewController class]])
+    
+    if ([segue.identifier isEqualToString:@"GoToResVC"])
     {
+        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
+        RBUResultsViewController *dest = (RBUResultsViewController*) nav.topViewController;
         if (_delayOver) { //end the current lap
             _rh.totallaps += 1;
             [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
@@ -95,7 +98,6 @@
             _thislapticks = 0;
         }
         
-        RBUResultsViewController *dest = segue.destinationViewController;
         dest.rh = _rh;
         [_motiontimer invalidate];
         [_timer invalidate];
