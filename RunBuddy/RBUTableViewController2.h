@@ -1,15 +1,14 @@
 //
-//  RBUTableViewController.h
+//  RBUTableViewController2.h
 //  RunBuddy
 //
-//  Created by Patrick D'Errico on 6/30/14.
+//  Created by Patrick D'Errico on 7/8/14.
 //  Copyright (c) 2014 derricp1. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "RBURunHelper.h"
-#import "RBUTableViewController2.h"
 
-@interface RBUTableViewController : UITableViewController
+@interface RBUTableViewController2 : UITableViewController
     @property (strong) RBURunHelper* rh;
 @end

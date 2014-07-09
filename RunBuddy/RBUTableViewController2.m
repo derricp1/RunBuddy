@@ -1,18 +1,18 @@
 //
-//  RBUTableViewController.m
+//  RBUTableViewController2.m
 //  RunBuddy
 //
-//  Created by Patrick D'Errico on 6/30/14.
+//  Created by Patrick D'Errico on 7/8/14.
 //  Copyright (c) 2014 derricp1. All rights reserved.
 //
 
-#import "RBUTableViewController.h"
+#import "RBUTableViewController2.h"
 
-@interface RBUTableViewController ()
+@interface RBUTableViewController2 ()
 
 @end
 
-@implementation RBUTableViewController
+@implementation RBUTableViewController2
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,38 +52,22 @@
     return _rh.totallaps;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *ID = @"ListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
-    
-    // Configure the cell...
-    int lt = [[_rh.laptimes objectAtIndex:indexPath.row] intValue];
-    double allseconds = lt/10;
-    int minutes = allseconds/60;
-    int seconds = allseconds - 60*minutes;
-    
-    NSString* time = [[NSString stringWithFormat:@"%i", minutes] stringByAppendingString:[@":" stringByAppendingString:[NSString stringWithFormat:@"%i", seconds]]];
-    
-    //NSString* dist = [@"          " stringByAppendingString:[NSString stringWithFormat:@"%.2f", distance]];
-    //dist = [dist stringByAppendingString:@" miles"];
+
+    int ld = [[_rh.lapdistances objectAtIndex:indexPath.row] intValue];
+    double distance = (ld/5280);
+
+    NSString* dist = [@"" stringByAppendingString:[NSString stringWithFormat:@"%.2f", distance]];
+    dist = [dist stringByAppendingString:@" miles"];
     
     //cell.textLabel.text = [time stringByAppendingString:dist];
-    cell.textLabel.text = time;
+    cell.textLabel.text = dist;
     
     return cell;
 }
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"GoToTVC2"])
-    {
-        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
-        RBUTableViewController2 *dest = (RBUTableViewController2*) nav.topViewController;
-        dest.rh = _rh;
-    }
-}
-
 
 /*
 // Override to support conditional editing of the table view.
