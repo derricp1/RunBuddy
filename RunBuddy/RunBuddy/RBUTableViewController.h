@@ -12,4 +12,5 @@
 
 @interface RBUTableViewController : UITableViewController
     @property (strong) RBURunHelper* rh;
+    @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @end

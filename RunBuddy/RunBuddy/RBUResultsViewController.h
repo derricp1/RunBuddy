@@ -12,6 +12,7 @@
 @interface RBUResultsViewController : UIViewController {
     IBOutlet UIScrollView *scroller;
 }
+- (IBAction)unwindToRVC:(UIStoryboardSegue *)segue;
     @property RBURunHelper* rh;
 
     @property (weak, nonatomic) IBOutlet UIImageView *Bar1;

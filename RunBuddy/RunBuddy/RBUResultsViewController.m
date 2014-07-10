@@ -16,6 +16,7 @@
     @property double totaldistance;
     @property double maxsegdistance;
     @property NSTimer* timer;
+
 @end
 
 @implementation RBUResultsViewController
@@ -225,7 +226,7 @@
 }
 */
 
-- (IBAction)unwindFromTables:(UIStoryboardSegue *)segue
+- (IBAction)unwindToRVC:(UIStoryboardSegue *)segue
 {
     
 }

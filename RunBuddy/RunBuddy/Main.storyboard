@@ -411,12 +411,15 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="DTg-ng-HNj" kind="unwind" unwindAction="unwindToRVC:" id="9qV-WL-ABj"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="DTg-ng-HNj" kind="unwind" unwindAction="unwindFromTables:" id="SBd-bB-m1W"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="qku-ug-caP" id="uza-it-AUQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ut0-Q6-YQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DTg-ng-HNj" userLabel="Exit" sceneMemberID="exit"/>
@@ -515,10 +518,10 @@
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="t6W-cG-rBp" kind="unwind" unwindAction="unwindToRVC:" id="KBa-22-ZYh"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="t6W-cG-rBp" kind="unwind" unwindAction="unwindFromTables:" id="Ctm-kd-5jk"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
