@@ -24,8 +24,40 @@
                                             <action selector="SegmentTimeChanged:" destination="TVd-qo-FMi" eventType="valueChanged" id="ZXE-2q-R35"/>
                                         </connections>
                                     </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="0.0" maxValue="12" id="1fi-CY-GVW" userLabel="Segment_Time">
+                                        <rect key="frame" x="18" y="302" width="284" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label=""/>
+                                        <connections>
+                                            <action selector="MaxSpeedChanged:" destination="TVd-qo-FMi" eventType="valueChanged" id="ELd-oQ-pqO"/>
+                                            <action selector="SegmentTimeChanged:" destination="TVd-qo-FMi" eventType="valueChanged" id="4VT-fb-42e"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="12" id="5US-kD-vkw" userLabel="Segment_Time">
+                                        <rect key="frame" x="18" y="398" width="284" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label=""/>
+                                        <connections>
+                                            <action selector="MinSpeedChanged:" destination="TVd-qo-FMi" eventType="valueChanged" id="2T9-8b-yeY"/>
+                                            <action selector="SegmentTimeChanged:" destination="TVd-qo-FMi" eventType="valueChanged" id="504-cR-olD"/>
+                                        </connections>
+                                    </slider>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segment Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oBd-BR-WNd">
                                         <rect key="frame" x="103" y="177" width="112" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Speed Tracking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YQ0-zs-cql">
+                                        <rect key="frame" x="58" y="273" width="202" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Speed Tracking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FqW-0U-gUX">
+                                        <rect key="frame" x="58" y="369" width="202" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -50,6 +82,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gVR-fx-s4P">
+                                        <rect key="frame" x="154" y="340" width="10" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gng-SI-k1u">
+                                        <rect key="frame" x="154" y="436" width="10" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V9h-ep-JsF">
                                         <rect key="frame" x="129" y="148" width="60" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,7 +101,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M6S-R6-GFH">
-                                        <rect key="frame" x="104" y="305" width="113" height="89"/>
+                                        <rect key="frame" x="104" y="465" width="113" height="89"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <state key="normal" title="GO!">
@@ -77,6 +121,10 @@
                     <connections>
                         <outlet property="DelayLabel" destination="V9h-ep-JsF" id="mbB-kz-Tge"/>
                         <outlet property="DelaySlider" destination="mHG-p1-w9C" id="yqL-QR-oPv"/>
+                        <outlet property="MaxLabel" destination="gVR-fx-s4P" id="LP9-wz-fw8"/>
+                        <outlet property="MaxSlider" destination="1fi-CY-GVW" id="QYH-fe-UKV"/>
+                        <outlet property="MinLabel" destination="gng-SI-k1u" id="oQY-sO-gNR"/>
+                        <outlet property="MinSlider" destination="5US-kD-vkw" id="c8h-10-psV"/>
                         <outlet property="SegmentLabel" destination="aW1-aX-nH7" id="sXL-3u-GLx"/>
                         <outlet property="SegmentSlider" destination="cVU-HI-qEG" id="OCQ-an-KM9"/>
                         <outlet property="scroller" destination="mrn-yl-NfL" id="WAe-w6-Lsz"/>
@@ -126,10 +174,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Running..." id="IDg-tb-dTY">
-                        <barButtonItem key="rightBarButtonItem" title="Back" id="UGq-lH-b1B">
-                            <connections>
-                                <segue destination="xqE-7I-rle" kind="unwind" unwindAction="unwindFromRun:" id="7jI-sR-lCu"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="R2Q-xR-HGc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lop-Fm-Lrt">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xqE-7I-rle" kind="unwind" unwindAction="unwindFromRun:" id="hN7-VR-tRf"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -258,6 +314,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Results" id="8bP-Go-CIc">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="H7b-az-8af">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u9o-Kk-uDs">
@@ -272,12 +329,21 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Back" id="jgZ-en-XJU">
-                            <connections>
-                                <segue destination="iHI-8k-hHM" kind="unwind" unwindAction="unwindFromResults:" id="Qg6-bx-BqR"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="JBC-HR-jEn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O2O-Uw-HMB">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iHI-8k-hHM" kind="unwind" unwindAction="unwindFromResults:" id="aGy-04-maS"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Bar1" destination="hck-42-rsl" id="BxF-Lr-D2k"/>
                         <outlet property="Bar10" destination="zqE-Au-Td2" id="gcH-1w-bXZ"/>

@@ -68,11 +68,11 @@
     _maxsegdistance = _maxsegdistance/5280;
     _totaldistance = _totaldistance/5280;
     
-    NSString* tstring = [NSString stringWithFormat:@"%.2f", _maxsegdistance];
+    NSString* tstring = [NSString stringWithFormat:@"%.02f", _maxsegdistance];
     [_maxDistanceLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
     //self.maxDistanceLabel.text = [[NSString stringWithFormat:@"%f", _maxsegdistance] stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
     
-    NSString* ttstring = [NSString stringWithFormat:@"%.2f", _totaldistance];
+    NSString* ttstring = [NSString stringWithFormat:@"%.02f", _totaldistance];
     [_maxSpeedLabel setText:[ttstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
     //self.totalDistanceLabel.text = [[NSString stringWithFormat:@"%f", _totaldistance] stringByAppendingString:[NSString stringWithUTF8String:" mph"]];
 }
@@ -86,7 +86,7 @@
         }
     }
     _maxsegspeed = ((int)(curmax * 10)) / 10;
-    NSString* tstring = [NSString stringWithFormat:@"%.2f", _maxsegspeed];
+    NSString* tstring = [NSString stringWithFormat:@"%.02f", _maxsegspeed];
     [_maxSpeedLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
 }
 

@@ -64,7 +64,14 @@
     int minutes = allseconds/60;
     int seconds = allseconds - 60*minutes;
     
-    NSString* time = [[NSString stringWithFormat:@"%i", minutes] stringByAppendingString:[@":" stringByAppendingString:[NSString stringWithFormat:@"%i", seconds]]];
+    NSString* mstring = [NSString stringWithFormat:@"%i", minutes];
+    NSString* sstring = [NSString stringWithFormat:@"%i", seconds];
+    
+    if (seconds < 10) {
+        sstring = [@"0" stringByAppendingString:sstring];
+    }
+    
+    NSString* time = [[mstring stringByAppendingString:@":"] stringByAppendingString:sstring];
     
     //NSString* dist = [@"          " stringByAppendingString:[NSString stringWithFormat:@"%.2f", distance]];
     //dist = [dist stringByAppendingString:@" miles"];

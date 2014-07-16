@@ -12,6 +12,8 @@
 @interface RBUMainViewController ()
     @property float delay;
     @property float segmentsize;
+    @property float maxspeed;
+    @property float minspeed;
 
 @end
 
@@ -77,8 +79,21 @@
     _delay = self.DelaySlider.value;
     int temp = floor(_delay);
     self.DelayLabel.text = [NSString stringWithFormat:@"%i", temp];
-
 }
+
+- (IBAction)MaxSpeedChanged:(id)sender {
+    _maxspeed = self.MaxSlider.value;
+    int temp = floor(_maxspeed);
+    self.MaxLabel.text = [NSString stringWithFormat:@"%i", temp];
+}
+
+- (IBAction)MinSpeedChanged:(id)sender {
+    _minspeed = self.MinSlider.value;
+    int temp = floor(_minspeed);
+    self.MinLabel.text = [NSString stringWithFormat:@"%i", temp];
+}
+
+
 
 - (IBAction)unwindFromRun:(UIStoryboardSegue *)segue
 {

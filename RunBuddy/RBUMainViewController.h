@@ -17,6 +17,12 @@
     @property (weak, nonatomic) IBOutlet UISlider *DelaySlider;
     @property (weak, nonatomic) IBOutlet UILabel *DelayLabel;
 
+    @property (weak, nonatomic) IBOutlet UISlider *MaxSlider;
+    @property (weak, nonatomic) IBOutlet UILabel *MaxLabel;
+
+    @property (weak, nonatomic) IBOutlet UISlider *MinSlider;
+    @property (weak, nonatomic) IBOutlet UILabel *MinLabel;
+
 - (IBAction)unwindFromRun:(UIStoryboardSegue *)segue;
 - (IBAction)unwindFromResults:(UIStoryboardSegue *)segue;
 @end
