@@ -28,10 +28,22 @@
     @property CMMotionManager *motion;
     @property NSTimer *timer;
     @property NSTimer *motiontimer;
+    @property NSTimer *speedtimer;
 
     @property BOOL delayOver;
     @property int delayticks; //seconds x 10
     @property NSTimer *delaytimer;
+
+    @property BOOL isOverMax;
+    @property BOOL isUnderMin;
+    @property BOOL exceededMin;
+    @property float currspeed;
+    @property float prevspeed;
+    @property float thisspeedticks;
+    @property float currseconds;
+
+    @property NSMutableArray *xmaxtimes;
+    @property NSMutableArray *xmintimes;
 
     //@property UIAccelerometer *accel;
 
@@ -60,6 +72,10 @@
     
     _delayticks = _delay*10;
     
+    _isOverMax = NO;
+    _isUnderMin = NO;
+    _exceededMin = NO;
+    
     //set up timers
 
     
@@ -74,6 +90,12 @@
                                                   selector:@selector(delayTimerFired:)
                                                   userInfo:nil
                                                    repeats:YES];
+    
+    _speedtimer = [NSTimer scheduledTimerWithTimeInterval:(1)
+                                                   target:self
+                                                 selector:@selector(speedTimerFired:)
+                                                 userInfo:nil
+                                                  repeats:YES];
     
     
     // Do any additional setup after loading the view.
@@ -138,6 +160,10 @@
     _rh.fullsegmentspeed = [[NSMutableArray alloc] init];
     _rh.lapdistances = [[NSMutableArray alloc] init];
     _rh.laptimes = [[NSMutableArray alloc] init];
+    
+    _currspeed = 0;
+    _prevspeed = 0;
+    _thisspeedticks = 0;
 
 }
 
@@ -171,6 +197,31 @@
 -(void)timerFired:(NSTimer*) t
 {
     [self segmentUpdate];
+}
+
+-(void)speedTimerFired:(NSTimer*) t
+{
+    if (_delayOver) {
+        _currseconds += 1;
+        if (_currspeed > 0) {
+            _prevspeed = _currspeed;
+        }
+        
+        _currspeed = _thisspeedticks*3600/5280;
+        _thisspeedticks = 0;
+        
+        if (_exceededMin == NO && _currspeed > _minspeed) {
+            _exceededMin = YES;
+        }
+        
+        if (_exceededMin == YES && _prevspeed >= _minspeed && _currspeed < _minspeed) {
+            [_xmintimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
+        }
+        if (_prevspeed <= _maxspeed && _currspeed > _maxspeed) {
+            [_xmaxtimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
+        }
+        
+    }
 }
 
 -(void)segmentUpdate {
@@ -220,12 +271,16 @@
             {
                 //zcalculation, needs to be tested though
                 if ([_zdata[_segmentticks-1] doubleValue] > 0) {
-                    _currentdistance += (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
-                    _lapdistance += (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
+                    float adder = (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
+                    _currentdistance += adder;
+                    _lapdistance += adder;
+                    _thisspeedticks += adder;
                 }
                 else if ([_zdata[_segmentticks-1] doubleValue] < 0) {
-                    _currentdistance += (3 + sqrt(-[_zdata[_segmentticks-1] doubleValue]));
-                    _lapdistance += (3 + sqrt(-[_zdata[_segmentticks-1] doubleValue]));
+                    float adder = (3 + sqrt([_zdata[_segmentticks-1] doubleValue]));
+                    _currentdistance += adder;
+                    _lapdistance += adder;
+                    _thisspeedticks += adder;
                 }
             
             }

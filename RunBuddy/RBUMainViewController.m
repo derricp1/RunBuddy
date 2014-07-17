@@ -56,6 +56,7 @@
         _segmentsize = floor(_segmentsize);
         dest.segmentsize = (int)_segmentsize;
         dest.delay = (int)_delay;
+        dest.maxspeed = (int)_maxspeed;
     }
 }
 

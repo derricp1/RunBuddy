@@ -19,5 +19,7 @@
     - (void)motionTimerFired:(NSTimer*) t;
     @property int segmentsize;
     @property int delay;
+    @property int maxspeed;
+    @property int minspeed;
 
 @end
