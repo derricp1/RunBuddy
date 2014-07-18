@@ -77,19 +77,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aW1-aX-nH7">
-                                        <rect key="frame" x="149" y="244" width="20" height="21"/>
+                                        <rect key="frame" x="129" y="244" width="60" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gVR-fx-s4P">
-                                        <rect key="frame" x="154" y="340" width="10" height="21"/>
+                                        <rect key="frame" x="129" y="340" width="60" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gng-SI-k1u">
-                                        <rect key="frame" x="154" y="436" width="10" height="21"/>
+                                        <rect key="frame" x="129" y="436" width="60" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -154,7 +154,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Md0-Z5-byQ" kind="modal" identifier="GoToResVC" id="YXh-Ck-lv1"/>
+                                            <action selector="pushedFinish:" destination="Ull-1C-bwo" eventType="touchUpInside" id="ycz-Em-cSk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ube-aH-Gh4">
@@ -186,16 +186,21 @@
                                     <segue destination="xqE-7I-rle" kind="unwind" unwindAction="unwindFromRun:" id="hN7-VR-tRf"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <segue destination="xqE-7I-rle" kind="unwind" unwindAction="unwindFromRun:" id="Hnk-Bi-dhm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="scroller" destination="e1Q-ZP-I9N" id="UxM-Se-h5s"/>
+                        <segue destination="Md0-Z5-byQ" kind="modal" identifier="GoToResVC" id="x5i-vP-97B"/>
+                        <segue destination="uVc-Lp-t5l" kind="modal" identifier="GoToMain" id="sZu-ej-u1L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FO0-9n-cN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xqE-7I-rle" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="26"/>
+            <point key="canvasLocation" x="1924" y="24"/>
         </scene>
         <!--Results View Controller - Results-->
         <scene sceneID="VEG-vU-0Ao">
@@ -585,7 +590,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Zv6-3h-Ntj" kind="modal" identifier="GoToUp" id="GZU-ti-dN3"/>
+                                    <action selector="pushedMore:" destination="eQi-ox-sZr" eventType="touchUpInside" id="cDT-L5-uxX"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -598,19 +603,21 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="t6W-cG-rBp" kind="unwind" unwindAction="unwindToRVC:" id="KBa-22-ZYh"/>
+                                    <segue destination="t6W-cG-rBp" kind="unwind" unwindAction="unwindToRVC:" id="54s-sb-JEz"/>
                                 </connections>
                             </button>
-                            <connections>
-                                <segue destination="t6W-cG-rBp" kind="unwind" unwindAction="unwindFromMoreResults:" id="g7a-oJ-UYC"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="rVu-qc-Z13" id="70x-Nu-J20"/>
+                        <segue destination="Zv6-3h-Ntj" kind="modal" identifier="GoToUp" id="zfD-Zk-abP"/>
+                        <segue destination="Md0-Z5-byQ" kind="modal" identifier="GoToResults" id="atg-zh-a6Y"/>
+                    </connections>
                 </tableViewController>
                 <exit id="t6W-cG-rBp" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBl-wY-1Am" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4864" y="26"/>
+            <point key="canvasLocation" x="4862" y="27"/>
         </scene>
         <!--Over View Controller - Over Cap-->
         <scene sceneID="Fdv-4Y-DAy">
@@ -668,10 +675,10 @@
                                 <state key="normal" title="More">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Aow-fl-UPH" kind="modal" identifier="GoToDown" id="dql-aH-aTd"/>
-                                </connections>
                             </button>
+                            <connections>
+                                <action selector="pushedMore:" destination="vXa-j3-uEC" id="YD0-jO-HRq"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="rKh-46-3Cu">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ekk-ot-DJN">
@@ -682,16 +689,21 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="80I-t4-aCT" kind="unwind" unwindAction="unwindFromMoreResults:" id="rC5-DH-AY8"/>
+                                    <segue destination="80I-t4-aCT" kind="unwind" unwindAction="unwindToRVC:" id="jdR-st-N00"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="mrK-II-uiY" id="DDu-X1-FoK"/>
+                        <segue destination="Aow-fl-UPH" kind="modal" identifier="GoToDown" id="hrf-El-eRQ"/>
+                        <segue destination="Md0-Z5-byQ" kind="modal" identifier="BackToResults" id="E8x-Mv-1vl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLn-9a-SAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="80I-t4-aCT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5927" y="27"/>
+            <point key="canvasLocation" x="5931" y="24"/>
         </scene>
         <!--Under View Controller - Under Floor-->
         <scene sceneID="t4y-Aa-vT7">
@@ -750,7 +762,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UEn-SB-V0s" kind="unwind" unwindAction="unwindFromMoreResults:" id="Est-tj-Hci"/>
+                                    <segue destination="UEn-SB-V0s" kind="unwind" unwindAction="unwindToRVC:" id="RT2-hU-7M8"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -893,4 +905,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="E8x-Mv-1vl"/>
+    </inferredMetricsTieBreakers>
 </document>

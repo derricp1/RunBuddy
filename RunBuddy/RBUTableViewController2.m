@@ -8,6 +8,7 @@
 
 #import "RBUTableViewController2.h"
 #import "RBUOverViewController.h"
+#import "RBUResultsViewController.h"
 
 @interface RBUTableViewController2 ()
 
@@ -27,6 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([_maxtimes count] + [_mintimes count] == 0) {
+        _moreButton.enabled = NO;
+        [_moreButton setAttributedTitle:(NSAttributedString*)@"" forState:UIControlStateNormal];
+    }
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -77,9 +83,21 @@
         RBUOverViewController *dest = (RBUOverViewController*) nav.topViewController;
         dest.maxtimes = _maxtimes;
         dest.mintimes = _mintimes;
+        dest.rh = _rh;
+    }
+    if ([segue.identifier isEqualToString:@"BackToResults"])
+    {
+        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
+        RBUResultsViewController *dest = (RBUResultsViewController*) nav.topViewController;
+        dest.maxtimes = _maxtimes;
+        dest.mintimes = _mintimes;
+        dest.rh = _rh;
     }
 }
 
+- (IBAction)pushedMore:(id)sender {
+    [self performSegueWithIdentifier:@"GoToUp" sender:sender];
+}
 
 /*
 // Override to support conditional editing of the table view.

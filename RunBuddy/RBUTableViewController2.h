@@ -13,4 +13,7 @@
     @property (strong) RBURunHelper* rh;
     @property NSMutableArray *maxtimes;
     @property NSMutableArray *mintimes;
+
+    @property (weak, nonatomic) IBOutlet UIButton *moreButton;
+
 @end

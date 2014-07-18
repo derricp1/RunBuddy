@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RBURunHelper.h"
 
 @interface RBUOverViewController : UITableViewController
     @property NSMutableArray *maxtimes;
     @property NSMutableArray *mintimes;
+    @property RBURunHelper *rh;
+
+    @property (weak, nonatomic) IBOutlet UIButton *moreButton;
+
 @end

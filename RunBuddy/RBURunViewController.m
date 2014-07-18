@@ -181,6 +181,15 @@
     }
 }
 
+- (IBAction)pushedFinish:(id)sender {
+    if (_delayOver) {
+        [self performSegueWithIdentifier:@"GoToResVC" sender:sender];
+    }
+    else {
+        [self performSegueWithIdentifier:@"GoToMain" sender:sender];
+    }
+}
+
 -(void)delayTimerFired:(NSTimer*) t
 {
     //dec delayticks, if 0, bool is true, turn off timer (you should turn off all timers in segue, then if-wrap the other timers
@@ -213,14 +222,14 @@
         _currspeed = _thisspeedticks*3600/5280;
         _thisspeedticks = 0;
         
-        if (_exceededMin == NO && _currspeed > _minspeed) {
+        if (_exceededMin == NO && _currspeed > _minspeed && _minspeed > 0) {
             _exceededMin = YES;
         }
         
-        if (_exceededMin == YES && _prevspeed >= _minspeed && _currspeed < _minspeed) {
+        if (_exceededMin == YES && _prevspeed >= _minspeed && _currspeed < _minspeed && _minspeed > 0) {
             [_xmintimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
         }
-        if (_prevspeed <= _maxspeed && _currspeed > _maxspeed) {
+        if (_prevspeed <= _maxspeed && _currspeed > _maxspeed && _maxspeed > 0) {
             [_xmaxtimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
         }
         

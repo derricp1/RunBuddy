@@ -85,13 +85,24 @@
 - (IBAction)MaxSpeedChanged:(id)sender {
     _maxspeed = self.MaxSlider.value;
     int temp = floor(_maxspeed);
-    self.MaxLabel.text = [NSString stringWithFormat:@"%i", temp];
+    if (temp > 0) {
+        self.MaxLabel.text = [NSString stringWithFormat:@"%i", temp];
+    }
+    else {
+        self.MaxLabel.text = @"OFF";
+    }
+        
 }
 
 - (IBAction)MinSpeedChanged:(id)sender {
     _minspeed = self.MinSlider.value;
     int temp = floor(_minspeed);
-    self.MinLabel.text = [NSString stringWithFormat:@"%i", temp];
+    if (temp > 0) {
+        self.MinLabel.text = [NSString stringWithFormat:@"%i", temp];
+    }
+    else {
+        self.MaxLabel.text = @"OFF";
+    }
 }
 
 
