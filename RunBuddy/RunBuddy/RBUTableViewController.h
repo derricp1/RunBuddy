@@ -13,4 +13,6 @@
 @interface RBUTableViewController : UITableViewController
     @property (strong) RBURunHelper* rh;
     @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+    @property NSMutableArray *maxtimes;
+    @property NSMutableArray *mintimes;
 @end

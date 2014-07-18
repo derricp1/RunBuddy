@@ -14,6 +14,8 @@
 }
 - (IBAction)unwindToRVC:(UIStoryboardSegue *)segue;
     @property RBURunHelper* rh;
+    @property NSMutableArray *maxtimes;
+    @property NSMutableArray *mintimes;
 
     @property (weak, nonatomic) IBOutlet UIImageView *Bar1;
     @property (weak, nonatomic) IBOutlet UIImageView *Bar2;

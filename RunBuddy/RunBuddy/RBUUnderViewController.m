@@ -44,28 +44,37 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [_mintimes count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *ID = @"ListPrototypeCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     
     // Configure the cell...
+    int lt = [[_mintimes objectAtIndex:indexPath.row] intValue];
+    double allseconds = lt/10;
+    int minutes = allseconds/60;
+    int seconds = allseconds - 60*minutes;
+    
+    NSString* mstring = [NSString stringWithFormat:@"%i", minutes];
+    NSString* sstring = [NSString stringWithFormat:@"%i", seconds];
+    
+    if (seconds < 10) {
+        sstring = [@"0" stringByAppendingString:sstring];
+    }
+    
+    NSString* time = [[mstring stringByAppendingString:@":"] stringByAppendingString:sstring];
+    cell.textLabel.text = time;
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

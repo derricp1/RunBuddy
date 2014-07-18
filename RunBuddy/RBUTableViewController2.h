@@ -11,4 +11,6 @@
 
 @interface RBUTableViewController2 : UITableViewController
     @property (strong) RBURunHelper* rh;
+    @property NSMutableArray *maxtimes;
+    @property NSMutableArray *mintimes;
 @end

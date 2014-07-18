@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RBUOverViewController : UITableViewController
-
+    @property NSMutableArray *maxtimes;
+    @property NSMutableArray *mintimes;
 @end

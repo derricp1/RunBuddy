@@ -7,6 +7,7 @@
 //
 
 #import "RBUTableViewController2.h"
+#import "RBUOverViewController.h"
 
 @interface RBUTableViewController2 ()
 
@@ -68,6 +69,17 @@
     
     return cell;
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToUp"])
+    {
+        UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
+        RBUOverViewController *dest = (RBUOverViewController*) nav.topViewController;
+        dest.maxtimes = _maxtimes;
+        dest.mintimes = _mintimes;
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

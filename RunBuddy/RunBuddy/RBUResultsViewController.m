@@ -212,6 +212,8 @@
         UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
         RBUResultsViewController *dest = (RBUResultsViewController*) nav.topViewController;
         dest.rh = _rh;
+        dest.maxtimes = _maxtimes;
+        dest.mintimes = _mintimes;
     }
 }
 

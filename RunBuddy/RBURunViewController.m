@@ -118,6 +118,9 @@
             [_rh.laptimes addObject:(id)[NSNumber numberWithInt:(_thislapticks)]];
             [_rh.lapdistances addObject:(id)[NSNumber numberWithInt:(_lapdistance)]];
             _thislapticks = 0;
+            dest.maxtimes = _xmaxtimes;
+            dest.mintimes = _xmintimes;
+            
         }
         
         dest.rh = _rh;

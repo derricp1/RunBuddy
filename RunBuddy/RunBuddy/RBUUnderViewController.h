@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RBUUnderViewController : UITableViewController
-
+    @property NSMutableArray *mintimes;
 @end

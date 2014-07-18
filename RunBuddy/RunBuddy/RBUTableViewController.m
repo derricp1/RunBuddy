@@ -88,6 +88,8 @@
         UINavigationController *nav = (UINavigationController*) segue.destinationViewController;
         RBUTableViewController2 *dest = (RBUTableViewController2*) nav.topViewController;
         dest.rh = _rh;
+        dest.maxtimes = _maxtimes;
+        dest.mintimes = _mintimes;
     }
 }
 
