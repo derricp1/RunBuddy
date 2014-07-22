@@ -16,6 +16,7 @@
     @property RBURunHelper* rh;
     @property NSMutableArray *maxtimes;
     @property NSMutableArray *mintimes;
+    @property double totalticks;
 
     @property (weak, nonatomic) IBOutlet UIImageView *Bar1;
     @property (weak, nonatomic) IBOutlet UIImageView *Bar2;
@@ -31,6 +32,7 @@
     @property (weak, nonatomic) IBOutlet UILabel *maxSpeedLabel;
     @property (weak, nonatomic) IBOutlet UILabel *maxDistanceLabel;
     @property (weak, nonatomic) IBOutlet UILabel *totalDistanceLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
 

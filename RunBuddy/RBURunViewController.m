@@ -42,6 +42,8 @@
     @property float thisspeedticks;
     @property float currseconds;
 
+    @property float totalticks;
+
     @property NSMutableArray *xmaxtimes;
     @property NSMutableArray *xmintimes;
 
@@ -120,6 +122,7 @@
             _thislapticks = 0;
             dest.maxtimes = _xmaxtimes;
             dest.mintimes = _xmintimes;
+            dest.totalticks = _totalticks;
             
         }
         
@@ -153,6 +156,7 @@
     _currentdistance = 0;
     _currentsteps = 0;
     _thislapticks = 0;
+    _totalticks = 0;
     _motionlevel = 0.5;
     _xdata = [[NSMutableArray alloc] init];
     _ydata = [[NSMutableArray alloc] init];
@@ -256,7 +260,22 @@
 
 -(void)motionTimerFired:(NSTimer*) t
 {
+    //since this always runs, it's fine to use here
+    _finishButton.enabled = _delayOver;
+    
     if (_delayOver) {
+        
+        _totalticks += 1;
+        int lminutes = floor(_totalticks/600);
+        NSString* mstring = [NSString stringWithFormat:@"%.2i", lminutes];
+        int lseconds = floor((_totalticks-600*lminutes)/10);
+        NSString* sstring = [NSString stringWithFormat:@"%.2i", lseconds];
+        int lmseconds = floor((_totalticks-600*lminutes-10*lseconds)*6);
+        NSString* msstring = [NSString stringWithFormat:@"%.2i", lmseconds];
+        NSString* time1 = [[sstring stringByAppendingString:@":"] stringByAppendingString:msstring];
+        NSString* time = [[mstring stringByAppendingString:@":"] stringByAppendingString:time1];
+        _timeLabel.text = time;
+        
         CMAccelerometerData *data = _motion.accelerometerData;
         CMAcceleration accel = data.acceleration;
     

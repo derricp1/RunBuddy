@@ -31,7 +31,6 @@
     
     if ([_mintimes count] == 0) {
         _moreButton.enabled = NO;
-        [_moreButton setAttributedTitle:(NSAttributedString*)@"" forState:UIControlStateNormal];
     }
     
     // Uncomment the following line to preserve selection between presentations.

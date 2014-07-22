@@ -147,7 +147,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AHZ-xG-aG4">
-                                        <rect key="frame" x="60" y="287" width="201" height="89"/>
+                                        <rect key="frame" x="60" y="318" width="201" height="89"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <state key="normal" title="FINISH">
@@ -158,7 +158,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ube-aH-Gh4">
-                                        <rect key="frame" x="102" y="92" width="117" height="89"/>
+                                        <rect key="frame" x="102" y="189" width="117" height="89"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <state key="normal" title="LAP">
@@ -168,6 +168,13 @@
                                             <action selector="pushedLap:" destination="Ull-1C-bwo" eventType="touchUpInside" id="NST-fu-RLF"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ppa-9g-9ds">
+                                        <rect key="frame" x="20" y="101" width="280" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -192,7 +199,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="finishButton" destination="AHZ-xG-aG4" id="sVy-tI-cvP"/>
                         <outlet property="scroller" destination="e1Q-ZP-I9N" id="UxM-Se-h5s"/>
+                        <outlet property="timeLabel" destination="Ppa-9g-9ds" id="mEI-ke-I39"/>
                         <segue destination="Md0-Z5-byQ" kind="modal" identifier="GoToResVC" id="x5i-vP-97B"/>
                         <segue destination="uVc-Lp-t5l" kind="modal" identifier="GoToMain" id="sZu-ej-u1L"/>
                     </connections>
@@ -314,6 +323,18 @@
                                             <segue destination="iHI-8k-hHM" kind="unwind" unwindAction="unwindFromResults:" id="McL-62-ods"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Vo-82-kwH">
+                                        <rect key="frame" x="20" y="178" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yaW-3Y-pUv">
+                                        <rect key="frame" x="214" y="178" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -363,6 +384,7 @@
                         <outlet property="maxDistanceLabel" destination="i3E-ew-S2n" id="63F-vG-ny4"/>
                         <outlet property="maxSpeedLabel" destination="6Xe-6d-1aE" id="ycg-Iu-keR"/>
                         <outlet property="scroller" destination="3aP-oe-fYW" id="XGD-WG-Ehm"/>
+                        <outlet property="timeLabel" destination="yaW-3Y-pUv" id="miQ-Gk-6E1"/>
                         <outlet property="totalDistanceLabel" destination="Yhw-rv-a6i" id="Ikg-ni-D8r"/>
                     </connections>
                 </viewController>
@@ -906,6 +928,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="E8x-Mv-1vl"/>
+        <segue reference="x5i-vP-97B"/>
     </inferredMetricsTieBreakers>
 </document>

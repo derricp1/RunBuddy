@@ -22,4 +22,7 @@
     @property int maxspeed;
     @property int minspeed;
 
+    @property (weak, nonatomic) IBOutlet UIButton *finishButton;
+    @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
 @end

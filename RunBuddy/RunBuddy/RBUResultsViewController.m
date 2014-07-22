@@ -17,6 +17,7 @@
     @property double maxsegdistance;
     @property NSTimer* timer;
 
+
 @end
 
 @implementation RBUResultsViewController
@@ -46,6 +47,16 @@
                                                   repeats:NO];
     
     _maxbar = 200;
+    
+    int lminutes = floor(_totalticks/600);
+    NSString* mstring = [NSString stringWithFormat:@"%.2i", lminutes];
+    int lseconds = floor((_totalticks-600*lminutes)/10);
+    NSString* sstring = [NSString stringWithFormat:@"%.2i", lseconds];
+    int lmseconds = floor((_totalticks-600*lminutes-10*lseconds)*6);
+    NSString* msstring = [NSString stringWithFormat:@"%.2i", lmseconds];
+    NSString* time1 = [[sstring stringByAppendingString:@":"] stringByAppendingString:msstring];
+    NSString* time = [[mstring stringByAppendingString:@":"] stringByAppendingString:time1];
+    _timeLabel.text = time;
     
     // Do any additional setup after loading the view.
 }
