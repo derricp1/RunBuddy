@@ -62,10 +62,23 @@
     return self;
 }
 
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    
+}
+
+
 - (void)viewDidLoad
 {
-    [scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(320,568)];
+    [scroller setScrollEnabled:NO];
+    //[scroller setContentSize:CGSizeMake(320,568)];
+    
+    scroller.contentSize = CGSizeMake(scroller.contentSize.width,scroller.frame.size.height);
     
     [super viewDidLoad];
     [self setupstats];

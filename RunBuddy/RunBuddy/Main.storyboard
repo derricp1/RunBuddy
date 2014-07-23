@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uVc-Lp-t5l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uVc-Lp-t5l">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -147,7 +147,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AHZ-xG-aG4">
-                                        <rect key="frame" x="60" y="318" width="201" height="89"/>
+                                        <rect key="frame" x="60" y="312" width="201" height="89"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <state key="normal" title="FINISH">
@@ -158,7 +158,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ube-aH-Gh4">
-                                        <rect key="frame" x="102" y="189" width="117" height="89"/>
+                                        <rect key="frame" x="102" y="177" width="117" height="89"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <state key="normal" title="LAP">
@@ -169,7 +169,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ppa-9g-9ds">
-                                        <rect key="frame" x="20" y="101" width="280" height="58"/>
+                                        <rect key="frame" x="20" y="82" width="280" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="61"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -200,6 +200,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="finishButton" destination="AHZ-xG-aG4" id="sVy-tI-cvP"/>
+                        <outlet property="lapButton" destination="ube-aH-Gh4" id="RLY-2O-U0B"/>
                         <outlet property="scroller" destination="e1Q-ZP-I9N" id="UxM-Se-h5s"/>
                         <outlet property="timeLabel" destination="Ppa-9g-9ds" id="mEI-ke-I39"/>
                         <segue destination="Md0-Z5-byQ" kind="modal" identifier="GoToResVC" id="x5i-vP-97B"/>
