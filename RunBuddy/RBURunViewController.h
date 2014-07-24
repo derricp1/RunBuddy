@@ -22,6 +22,43 @@
     @property int maxspeed;
     @property int minspeed;
 
+    @property (strong) RBURunHelper *rh;
+
+    @property int segmentticks;
+    @property int currentsteps;
+    @property double currentdistance;
+    @property double motionlevel; //floor for motion
+
+    @property double lapdistance;
+
+    @property int thislapticks;
+
+    @property NSMutableArray *xdata;
+    @property NSMutableArray *ydata;
+    @property NSMutableArray *zdata;
+
+    @property CMMotionManager *motion;
+    @property NSTimer *timer;
+    @property NSTimer *motiontimer;
+    @property NSTimer *speedtimer;
+
+    @property BOOL delayOver;
+    @property int delayticks; //seconds x 10
+    @property NSTimer *delaytimer;
+
+    @property BOOL isOverMax;
+    @property BOOL isUnderMin;
+    @property BOOL exceededMin;
+    @property float currspeed;
+    @property float prevspeed;
+    @property float thisspeedticks;
+    @property float currseconds;
+
+    @property float totalticks;
+
+    @property NSMutableArray *xmaxtimes;
+    @property NSMutableArray *xmintimes;
+
     @property (weak, nonatomic) IBOutlet UIButton *finishButton;
     @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
     @property (weak, nonatomic) IBOutlet UIButton *lapButton;

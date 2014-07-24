@@ -1,21 +1,21 @@
 //
-//  RBURunViewController.m
+//  RBULeftRunViewController.m
 //  RunBuddy
 //
-//  Created by Patrick D'Errico on 6/17/14.
+//  Created by Patrick D'Errico on 7/23/14.
 //  Copyright (c) 2014 derricp1. All rights reserved.
 //
 
-#import "RBURunViewController.h"
-#import "RBUResultsViewController.h"
 #import "RBULeftRunViewController.h"
+#import "RBUResultsViewController.h"
 #import "RBURightRunViewController.h"
+#import "RBURunViewController.h"
 
-@interface RBURunViewController ()
+@interface RBULeftRunViewController ()
 
 @end
 
-@implementation RBURunViewController
+@implementation RBULeftRunViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,44 +26,8 @@
     return self;
 }
 
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        
-        CGRect f = [_timeLabel frame];
-        f.origin.x = 0;
-        f.origin.y = 0;
-        [_timeLabel setFrame:f];
-        
-        f = [_lapButton frame];
-        f.origin.x = 15;
-        f.origin.y = 140;
-        [_lapButton setFrame:f];
-        
-        f = [_finishButton frame];
-        f.origin.x = 90;
-        f.origin.y = 140;
-        [_finishButton setFrame:f];
-        
-    }
-    if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        
-        CGRect f = [_timeLabel frame];
-        f.origin.x = 40;
-        f.origin.y = 80;
-        [_timeLabel setFrame:f];
-        
-        f = [_lapButton frame];
-        f.origin.x = 120;
-        f.origin.y = 160;
-        [_lapButton setFrame:f];
-        
-        f = [_finishButton frame];
-        f.origin.x = 80;
-        f.origin.y = 260;
-        [_finishButton setFrame:f];
-        
-    }
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)i {
+    return (i != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 
@@ -79,10 +43,6 @@
     _motion = [[CMMotionManager alloc] init];
     [_motion startAccelerometerUpdates];
     
-    //CGRect f = [_timeLabel frame];
-    //f.origin.x += 100;
-    //[_timeLabel setFrame:f];
-    
     _delayticks = _delay*10;
     
     _isOverMax = NO;
@@ -90,19 +50,19 @@
     _exceededMin = NO;
     
     //set up timers
-
+    
     
     _motiontimer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
-                                              target:self
-                                            selector:@selector(motionTimerFired:)
-                                            userInfo:nil
-                                             repeats:YES];
-    
-    _delaytimer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
                                                     target:self
-                                                  selector:@selector(delayTimerFired:)
+                                                  selector:@selector(motionTimerFired:)
                                                   userInfo:nil
                                                    repeats:YES];
+    
+    _delaytimer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
+                                                   target:self
+                                                 selector:@selector(delayTimerFired:)
+                                                 userInfo:nil
+                                                  repeats:YES];
     
     _speedtimer = [NSTimer scheduledTimerWithTimeInterval:(1)
                                                    target:self
@@ -144,22 +104,22 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 /*
  - (IBAction)goToRunView:(UIStoryboardSegue *)segue
-{
-    
-}
-*/
+ {
+ 
+ }
+ */
 
 -(void)setupstats
 {
@@ -182,7 +142,7 @@
     _currspeed = 0;
     _prevspeed = 0;
     _thisspeedticks = 0;
-
+    
 }
 
 - (IBAction)pushedLap:(id)sender {
@@ -289,25 +249,25 @@
         
         CMAccelerometerData *data = _motion.accelerometerData;
         CMAcceleration accel = data.acceleration;
-    
+        
         _segmentticks += 1;
         [_xdata addObject:(id)[NSNumber numberWithDouble:accel.x]];
         [_ydata addObject:(id)[NSNumber numberWithDouble:accel.y]];
         [_zdata addObject:(id)[NSNumber numberWithDouble:accel.z]];
         
         _thislapticks += 1;
-    
+        
         if (_segmentticks > 1)
         {
             /*
-            if (([_xdata[_segmentticks-2] doubleValue] < _motionlevel && [_xdata[_segmentticks-1] doubleValue] >= _motionlevel) ||([_xdata[_segmentticks-2] doubleValue] > -_motionlevel && [_xdata[_segmentticks-1] doubleValue] <= -_motionlevel))
-            {
-                //xcalculation
-            }
-            if (([_ydata[_segmentticks-2] doubleValue] < _motionlevel && [_ydata[_segmentticks-1] doubleValue] >= _motionlevel) ||([_ydata[_segmentticks-2] doubleValue] > -_motionlevel && [_ydata[_segmentticks-1] doubleValue] <= -_motionlevel))
-            {
-                //ycalculation
-            }
+             if (([_xdata[_segmentticks-2] doubleValue] < _motionlevel && [_xdata[_segmentticks-1] doubleValue] >= _motionlevel) ||([_xdata[_segmentticks-2] doubleValue] > -_motionlevel && [_xdata[_segmentticks-1] doubleValue] <= -_motionlevel))
+             {
+             //xcalculation
+             }
+             if (([_ydata[_segmentticks-2] doubleValue] < _motionlevel && [_ydata[_segmentticks-1] doubleValue] >= _motionlevel) ||([_ydata[_segmentticks-2] doubleValue] > -_motionlevel && [_ydata[_segmentticks-1] doubleValue] <= -_motionlevel))
+             {
+             //ycalculation
+             }
              */
             if (([_zdata[_segmentticks-2] doubleValue] < _motionlevel && [_zdata[_segmentticks-1] doubleValue] >= _motionlevel) ||  ([_zdata[_segmentticks-2] doubleValue] > -_motionlevel && [_zdata[_segmentticks-1] doubleValue] <= -_motionlevel))
             {
@@ -324,7 +284,7 @@
                     _lapdistance += adder;
                     _thisspeedticks += adder;
                 }
-            
+                
             }
         }
     }
