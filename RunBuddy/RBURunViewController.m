@@ -26,44 +26,114 @@
     return self;
 }
 
+-(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        _willRot = 1;
+    }
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
+        _willRot = 2;
+    }
+}
+
+- (void)landscapeRotate
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
+    
+    int o = [self getOrientation];
+    
+    if (o == 1) {
         
         CGRect f = [_timeLabel frame];
-        f.origin.x = 0;
-        f.origin.y = 0;
+        int sizex = f.size.width;
+        int sizey = f.size.height;
+        f.origin.x = ((int) height/2 - sizex/2);
+        f.origin.y = (int) width * 0.1;
         [_timeLabel setFrame:f];
         
         f = [_lapButton frame];
-        f.origin.x = 15;
-        f.origin.y = 140;
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) 0;
+        f.origin.y = (int) width * 0.4;
         [_lapButton setFrame:f];
-        
+    
         f = [_finishButton frame];
-        f.origin.x = 90;
-        f.origin.y = 140;
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) height - sizex;
+        f.origin.y = (int) width * 0.4;
         [_finishButton setFrame:f];
-        
     }
-    if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+    else {
         
         CGRect f = [_timeLabel frame];
-        f.origin.x = 40;
-        f.origin.y = 80;
+        int sizex = f.size.width;
+        int sizey = f.size.height;
+        f.origin.x = ((int) height/2 - sizex/2);
+        f.origin.y = (int) width * 0.1;
         [_timeLabel setFrame:f];
         
         f = [_lapButton frame];
-        f.origin.x = 120;
-        f.origin.y = 160;
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) 0;
+        f.origin.y = (int) width * 0.4;
         [_lapButton setFrame:f];
         
         f = [_finishButton frame];
-        f.origin.x = 80;
-        f.origin.y = 260;
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) height - sizex;
+        f.origin.y = (int) width * 0.4;
         [_finishButton setFrame:f];
-        
     }
+}
+
+- (void)portraitRotate
+{
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
+
+    CGRect f = [_timeLabel frame];
+    int sizex = f.size.width;
+    int sizey = f.size.height;
+    f.origin.x = (int) width/2 - sizex/2;
+    f.origin.y = (int) height/6;
+    [_timeLabel setFrame:f];
+    
+    f = [_lapButton frame];
+    sizex = f.size.width;
+    sizey = f.size.height;
+    f.origin.x = (int) width/2 - sizex/2;
+    f.origin.y = (int) height * 0.4;
+    [_lapButton setFrame:f];
+    
+    f = [_finishButton frame];
+    sizex = f.size.width;
+    sizey = f.size.height;
+    f.origin.x = (int) width/2 - sizex/2;
+    f.origin.y = (int) height * 0.7;
+    [_finishButton setFrame:f];
+}
+
+- (int)getOrientation
+{
+    UIInterfaceOrientation u = [UIApplication sharedApplication].statusBarOrientation;
+    if (u == UIInterfaceOrientationPortrait || u == UIInterfaceOrientationPortraitUpsideDown)
+        return 0;
+    else if (u == UIInterfaceOrientationLandscapeLeft)
+        return 1;
+    else
+        return 2;
 }
 
 
@@ -78,6 +148,11 @@
     [self setupstats];
     _motion = [[CMMotionManager alloc] init];
     [_motion startAccelerometerUpdates];
+    
+    if ([self getOrientation] == 0)
+        _willRot = 2;
+    else
+        _willRot = 1;
     
     //CGRect f = [_timeLabel frame];
     //f.origin.x += 100;
@@ -273,6 +348,16 @@
 {
     //since this always runs, it's fine to use here
     _finishButton.enabled = _delayOver;
+    
+    //we can also handle rotation
+    if (_willRot == 1) {
+        [self landscapeRotate];
+        _willRot = 0;
+    }
+    if (_willRot == 2) {
+        [self portraitRotate];
+        _willRot = 0;
+    }
     
     if (_delayOver) {
         

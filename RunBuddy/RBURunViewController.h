@@ -59,6 +59,8 @@
     @property NSMutableArray *xmaxtimes;
     @property NSMutableArray *xmintimes;
 
+    @property int willRot;
+
     @property (weak, nonatomic) IBOutlet UIButton *finishButton;
     @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
     @property (weak, nonatomic) IBOutlet UIButton *lapButton;
