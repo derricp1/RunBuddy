@@ -27,8 +27,7 @@
 		8FA05993196CD86400C21F91 /* RBUTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA05992196CD86400C21F91 /* RBUTableViewController2.m */; };
 		8FA059961978C44D00C21F91 /* RBUOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA059951978C44D00C21F91 /* RBUOverViewController.m */; };
 		8FA059991978C45C00C21F91 /* RBUUnderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA059981978C45C00C21F91 /* RBUUnderViewController.m */; };
-		8FD517DA198063330084D44A /* RBULeftRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD517D9198063330084D44A /* RBULeftRunViewController.m */; };
-		8FD517DD198063450084D44A /* RBURightRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD517DC198063450084D44A /* RBURightRunViewController.m */; };
+		8FD517E019873D4E0084D44A /* RBUHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD517DF19873D4E0084D44A /* RBUHelpViewController.m */; };
 		8FD7C354196261A50035C111 /* RBUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7C353196261A50035C111 /* RBUTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -74,10 +73,8 @@
 		8FA059951978C44D00C21F91 /* RBUOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUOverViewController.m; sourceTree = "<group>"; };
 		8FA059971978C45C00C21F91 /* RBUUnderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBUUnderViewController.h; sourceTree = "<group>"; };
 		8FA059981978C45C00C21F91 /* RBUUnderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUUnderViewController.m; sourceTree = "<group>"; };
-		8FD517D8198063330084D44A /* RBULeftRunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBULeftRunViewController.h; sourceTree = "<group>"; };
-		8FD517D9198063330084D44A /* RBULeftRunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBULeftRunViewController.m; sourceTree = "<group>"; };
-		8FD517DB198063450084D44A /* RBURightRunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURightRunViewController.h; sourceTree = "<group>"; };
-		8FD517DC198063450084D44A /* RBURightRunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURightRunViewController.m; sourceTree = "<group>"; };
+		8FD517DE19873D4E0084D44A /* RBUHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBUHelpViewController.h; sourceTree = "<group>"; };
+		8FD517DF19873D4E0084D44A /* RBUHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUHelpViewController.m; sourceTree = "<group>"; };
 		8FD7C352196261A50035C111 /* RBUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RBUTableViewController.h; path = RunBuddy/RBUTableViewController.h; sourceTree = "<group>"; };
 		8FD7C353196261A50035C111 /* RBUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RBUTableViewController.m; path = RunBuddy/RBUTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,10 +114,6 @@
 				8F25B618195124CF00FF7AB1 /* RBURunHelper.m */,
 				8F25B60219511E5900FF7AB1 /* RBURunViewController.h */,
 				8F25B60319511E5900FF7AB1 /* RBURunViewController.m */,
-				8FD517D8198063330084D44A /* RBULeftRunViewController.h */,
-				8FD517D9198063330084D44A /* RBULeftRunViewController.m */,
-				8FD517DB198063450084D44A /* RBURightRunViewController.h */,
-				8FD517DC198063450084D44A /* RBURightRunViewController.m */,
 				8F25B5D119510A8400FF7AB1 /* RunBuddy */,
 				8F25B5EA19510A8500FF7AB1 /* RunBuddyTests */,
 				8F25B5CA19510A8400FF7AB1 /* Frameworks */,
@@ -154,6 +147,8 @@
 				8F25B5DA19510A8400FF7AB1 /* RBUAppDelegate.h */,
 				8F25B5DB19510A8400FF7AB1 /* RBUAppDelegate.m */,
 				8F25B5FA19510AD200FF7AB1 /* Main.storyboard */,
+				8FD517DE19873D4E0084D44A /* RBUHelpViewController.h */,
+				8FD517DF19873D4E0084D44A /* RBUHelpViewController.m */,
 				8FA059941978C44D00C21F91 /* RBUOverViewController.h */,
 				8FA059951978C44D00C21F91 /* RBUOverViewController.m */,
 				8FA059971978C45C00C21F91 /* RBUUnderViewController.h */,
@@ -303,9 +298,8 @@
 				8F25B6161951207300FF7AB1 /* RBUResultsViewController.m in Sources */,
 				8F25B5D819510A8400FF7AB1 /* main.m in Sources */,
 				8FA05993196CD86400C21F91 /* RBUTableViewController2.m in Sources */,
-				8FD517DD198063450084D44A /* RBURightRunViewController.m in Sources */,
-				8FD517DA198063330084D44A /* RBULeftRunViewController.m in Sources */,
 				8F25B60D19511FAE00FF7AB1 /* RBUMainViewController.m in Sources */,
+				8FD517E019873D4E0084D44A /* RBUHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

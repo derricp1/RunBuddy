@@ -8,8 +8,6 @@
 
 #import "RBURunViewController.h"
 #import "RBUResultsViewController.h"
-#import "RBULeftRunViewController.h"
-#import "RBURightRunViewController.h"
 
 @interface RBURunViewController ()
 

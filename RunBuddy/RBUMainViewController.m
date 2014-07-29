@@ -101,7 +101,7 @@
         self.MinLabel.text = [NSString stringWithFormat:@"%i", temp];
     }
     else {
-        self.MaxLabel.text = @"OFF";
+        self.MinLabel.text = @"OFF";
     }
 }
 
@@ -118,6 +118,11 @@
 }
 
 - (IBAction)unwindFromMoreResults:(UIStoryboardSegue *)segue
+{
+    
+}
+
+- (IBAction)unwindFromHelp:(UIStoryboardSegue *)segue
 {
     
 }
