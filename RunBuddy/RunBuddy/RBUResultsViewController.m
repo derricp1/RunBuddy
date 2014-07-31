@@ -16,6 +16,7 @@
     @property double totaldistance;
     @property double maxsegdistance;
     @property NSTimer* timer;
+    @property BOOL adjustscreen;
     @property NSMutableArray* allsegs;
     @property NSMutableArray* allviews;
 @end
@@ -33,19 +34,28 @@
 
 - (void)viewDidLoad
 {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
+    
     [scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(320,568)];
+    [scroller setContentSize:CGSizeMake(width,height)];
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
+                                              target:self
+                                            selector:@selector(timerFired:)
+                                            userInfo:nil
+                                             repeats:YES];
+    
+    _adjustscreen = NO;
     
     [super viewDidLoad];
     
-    [self calcbars];
-    [self setuplevels];
+    [self findmaxsegspeed];
+    [self finddistancedata];
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
-                                                   target:self
-                                                 selector:@selector(timerFired:)
-                                                 userInfo:nil
-                                                  repeats:NO];
+    //[self calcbars];
+    [self setupmorelevels];
     
     _maxbar = 200;
     
@@ -58,19 +68,33 @@
     NSString* time1 = [[sstring stringByAppendingString:@":"] stringByAppendingString:msstring];
     NSString* time = [[mstring stringByAppendingString:@":"] stringByAppendingString:time1];
     _timeLabel.text = time;
+    //_timeLabel.text = [NSString stringWithFormat:@"%i", _rh.totalsegments];
     
     // Do any additional setup after loading the view.
 }
 
--(void)timerFired:(NSTimer*) timer
+-(void)timerFired:(NSTimer*) t
 {
-    [self findmaxsegspeed];
-    [self finddistancedata];
+    if (_adjustscreen) {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat width = screenRect.size.width;
+        CGFloat height = screenRect.size.height;
+
+        CGFloat scwidth = scroller.contentSize.width;
+        CGFloat scheight = scroller.contentSize.height;
+        
+        [scroller setScrollEnabled:YES];
+        [scroller setContentSize:CGSizeMake(scwidth,scheight)];
+        
+        [self orientscreen];
+        [self setupmorelevels];
+        _adjustscreen = NO;
+    }
 }
 
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self setuplevels];
+    _adjustscreen = YES;
 }
 
 - (void)finddistancedata
@@ -101,13 +125,14 @@
         }
     }
     _maxsegspeed = ((int)(curmax * 10)) / 10;
+    
     NSString* tstring = [NSString stringWithFormat:@"%.02f", _maxsegspeed];
     [_maxSpeedLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
 }
 
 - (void)setuplevels
 {
-    
+    /*
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat width = screenRect.size.width;
     
@@ -170,23 +195,35 @@
     f10.origin.x = (9/10) * width;
     f10.origin.y = f10.origin.y + (_maxbar - f10.size.height);
     _Bar10.frame = f10;
+     */
 }
 
--(void)setupmorelevels
+- (void)orientscreen
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat width = screenRect.size.width;
-    CGFloat height = screenRect.size.height;
     
-    float barsize = width/_rh.totalsegments;
+}
+
+- (void)setupmorelevels
+{
+    
+    CGFloat scwidth = scroller.contentSize.width;
+    CGFloat scheight = scroller.contentSize.height;
+    
+    float barsize = scwidth/_rh.totalsegments;
     
     for (int i=0; i<_rh.totalsegments; i++) {
         if (i < _rh.totalsegments) {
-            float q = 200 * [_rh.fullsegmentspeed[i] doubleValue]/_maxsegspeed;
+            float q = 0;
+            if (_maxsegspeed == 0) {
+                q = 200;
+            }
+            else {
+                q = 200 * [_rh.fullsegmentspeed[i] doubleValue]/_maxsegspeed;
+            }
             [_levels addObject:(id)[NSNumber numberWithInt:floor(200*([_rh.fullsegmentspeed[i] doubleValue]/_maxsegspeed))]];
-            UIImageView* t = [[UIImageView alloc] initWithFrame:CGRectMake((barsize*i/_rh.totalsegments),(height-q),width,q)];
+            UIImageView* t = [[UIImageView alloc] initWithFrame:CGRectMake((barsize*i),(scheight-q),barsize,q)];
             t.backgroundColor = [UIColor redColor];
-            [self.view addSubview: t];
+            [scroller addSubview: t];
         }
         else {
             [_levels addObject:(id)[NSNumber numberWithInt:0]];
