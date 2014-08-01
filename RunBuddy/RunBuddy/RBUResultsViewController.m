@@ -16,9 +16,13 @@
     @property double totaldistance;
     @property double maxsegdistance;
     @property NSTimer* timer;
-    @property BOOL adjustscreen;
+    @property int adjustscreen;
     @property NSMutableArray* allsegs;
     @property NSMutableArray* allviews;
+    @property int numviews;
+    @property CGFloat scwidth;
+    @property CGFloat scheight;
+    @property int offset;
 @end
 
 @implementation RBUResultsViewController
@@ -32,14 +36,28 @@
     return self;
 }
 
+- (int)getOrientation
+{
+    UIInterfaceOrientation u = [UIApplication sharedApplication].statusBarOrientation;
+    if (u == UIInterfaceOrientationPortrait || u == UIInterfaceOrientationPortraitUpsideDown)
+        return 0;
+    else if (u == UIInterfaceOrientationLandscapeLeft)
+        return 1;
+    else
+        return 2;
+}
+
 - (void)viewDidLoad
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat width = screenRect.size.width;
     CGFloat height = screenRect.size.height;
     
+    _numviews = 0;
+    _offset = 60;
+    
     [scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(width,height)];
+    [scroller setContentSize:CGSizeMake(width,height+_offset)];
     
     _timer = [NSTimer scheduledTimerWithTimeInterval:(0.1)
                                               target:self
@@ -47,7 +65,12 @@
                                             userInfo:nil
                                              repeats:YES];
     
-    _adjustscreen = NO;
+    if ([self getOrientation] == 0)
+        _adjustscreen = 2;
+    else
+        _adjustscreen = 1;
+    
+    //_adjustscreen = 0;
     
     [super viewDidLoad];
     
@@ -56,6 +79,7 @@
     
     //[self calcbars];
     [self setupmorelevels];
+
     
     _maxbar = 200;
     
@@ -73,28 +97,44 @@
     // Do any additional setup after loading the view.
 }
 
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        _adjustscreen = 1;
+    }
+    else
+        _adjustscreen = 2;
+}
+
 -(void)timerFired:(NSTimer*) t
 {
-    if (_adjustscreen) {
+    if (_adjustscreen > 0) {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         CGFloat width = screenRect.size.width;
         CGFloat height = screenRect.size.height;
-
-        CGFloat scwidth = scroller.contentSize.width;
-        CGFloat scheight = scroller.contentSize.height;
+        
+        for (int i=0;i<_numviews;i++) {
+            UIView* r = [scroller viewWithTag:(i+1000)];
+            [r removeFromSuperview];
+        }
+        _numviews = 0;
+        
+        if (_adjustscreen == 1) {
+            _scwidth = height;
+            _scheight = width;
+        }
+        else {
+            _scwidth = width;
+            _scheight = height;
+        }
         
         [scroller setScrollEnabled:YES];
-        [scroller setContentSize:CGSizeMake(scwidth,scheight)];
+        [scroller setContentSize:CGSizeMake(width,height+_offset)];
         
         [self orientscreen];
         [self setupmorelevels];
-        _adjustscreen = NO;
+        _adjustscreen = 0;
     }
-}
-
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    _adjustscreen = YES;
 }
 
 - (void)finddistancedata
@@ -205,28 +245,27 @@
 
 - (void)setupmorelevels
 {
-    
-    CGFloat scwidth = scroller.contentSize.width;
-    CGFloat scheight = scroller.contentSize.height;
-    
-    float barsize = scwidth/_rh.totalsegments;
+
+    float barsize = _scwidth/_rh.totalsegments;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
     
     for (int i=0; i<_rh.totalsegments; i++) {
         if (i < _rh.totalsegments) {
             float q = 0;
             if (_maxsegspeed == 0) {
-                q = 200;
+                q = 200 - 10*i;
             }
             else {
                 q = 200 * [_rh.fullsegmentspeed[i] doubleValue]/_maxsegspeed;
             }
             [_levels addObject:(id)[NSNumber numberWithInt:floor(200*([_rh.fullsegmentspeed[i] doubleValue]/_maxsegspeed))]];
-            UIImageView* t = [[UIImageView alloc] initWithFrame:CGRectMake((barsize*i),(scheight-q),barsize,q)];
+            UIImageView* t = [[UIImageView alloc] initWithFrame:CGRectMake((barsize*i),(height+_offset-q),barsize,q)];
             t.backgroundColor = [UIColor redColor];
+            t.tag = _numviews + 1000;
+            _numviews += 1;
             [scroller addSubview: t];
-        }
-        else {
-            [_levels addObject:(id)[NSNumber numberWithInt:0]];
         }
     }
 }

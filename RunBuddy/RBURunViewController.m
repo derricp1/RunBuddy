@@ -208,6 +208,14 @@
             dest.mintimes = _xmintimes;
             dest.totalticks = _totalticks;
             
+            //do segment updating as well
+            [_xdata removeAllObjects];
+            [_ydata removeAllObjects];
+            [_zdata removeAllObjects];
+            _rh.totalsegments += 1;
+            [_rh.fullsegmentmotiontotal addObject:(id)[NSNumber numberWithDouble:(_currentdistance)]];
+            [_rh.fullsegmentspeed addObject:(id)[NSNumber numberWithDouble:((_currentdistance*3600)/(_segmentticks*52800))]]; //feet per second -> mph
+            
         }
         
         dest.rh = _rh;
