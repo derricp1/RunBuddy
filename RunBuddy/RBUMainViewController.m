@@ -36,6 +36,8 @@
     
     _delay = 10;
     _segmentsize = 20;
+    _maxspeed = 8;
+    _minspeed = 3;
     
     // Do any additional setup after loading the view.
 }
@@ -84,6 +86,10 @@
 
 - (IBAction)MaxSpeedChanged:(id)sender {
     _maxspeed = self.MaxSlider.value;
+    if (_maxspeed < _minspeed) {
+        self.MinSlider.value = _maxspeed;
+        _minspeed = _maxspeed;
+    }
     int temp = floor(_maxspeed);
     if (temp > 0) {
         self.MaxLabel.text = [NSString stringWithFormat:@"%i", temp];
@@ -95,6 +101,9 @@
 }
 
 - (IBAction)MinSpeedChanged:(id)sender {
+    if (self.MinSlider.value > _maxspeed) {
+        self.MinSlider.value = _maxspeed;
+    }
     _minspeed = self.MinSlider.value;
     int temp = floor(_minspeed);
     if (temp > 0) {

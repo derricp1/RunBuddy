@@ -27,6 +27,8 @@
 		8FA05993196CD86400C21F91 /* RBUTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA05992196CD86400C21F91 /* RBUTableViewController2.m */; };
 		8FA059961978C44D00C21F91 /* RBUOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA059951978C44D00C21F91 /* RBUOverViewController.m */; };
 		8FA059991978C45C00C21F91 /* RBUUnderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA059981978C45C00C21F91 /* RBUUnderViewController.m */; };
+		8FB8130C19916231002E9F0B /* right.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FB8130A19916231002E9F0B /* right.mp3 */; };
+		8FB8130D19916231002E9F0B /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FB8130B19916231002E9F0B /* wrong.mp3 */; };
 		8FD517E019873D4E0084D44A /* RBUHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD517DF19873D4E0084D44A /* RBUHelpViewController.m */; };
 		8FD7C354196261A50035C111 /* RBUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7C353196261A50035C111 /* RBUTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		8FA059951978C44D00C21F91 /* RBUOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUOverViewController.m; sourceTree = "<group>"; };
 		8FA059971978C45C00C21F91 /* RBUUnderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBUUnderViewController.h; sourceTree = "<group>"; };
 		8FA059981978C45C00C21F91 /* RBUUnderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUUnderViewController.m; sourceTree = "<group>"; };
+		8FB8130A19916231002E9F0B /* right.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = right.mp3; sourceTree = "<group>"; };
+		8FB8130B19916231002E9F0B /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 		8FD517DE19873D4E0084D44A /* RBUHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBUHelpViewController.h; sourceTree = "<group>"; };
 		8FD517DF19873D4E0084D44A /* RBUHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUHelpViewController.m; sourceTree = "<group>"; };
 		8FD7C352196261A50035C111 /* RBUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RBUTableViewController.h; path = RunBuddy/RBUTableViewController.h; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 		8F25B5BF19510A8400FF7AB1 = {
 			isa = PBXGroup;
 			children = (
+				8FB8130A19916231002E9F0B /* right.mp3 */,
+				8FB8130B19916231002E9F0B /* wrong.mp3 */,
 				8FA05991196CD86400C21F91 /* RBUTableViewController2.h */,
 				8FA05992196CD86400C21F91 /* RBUTableViewController2.m */,
 				8FD7C353196261A50035C111 /* RBUTableViewController.m */,
@@ -268,7 +274,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB8130D19916231002E9F0B /* wrong.mp3 in Resources */,
 				8F25B5FB19510AD200FF7AB1 /* Main.storyboard in Resources */,
+				8FB8130C19916231002E9F0B /* right.mp3 in Resources */,
 				8F25B5D619510A8400FF7AB1 /* InfoPlist.strings in Resources */,
 				8F25B5DE19510A8400FF7AB1 /* Images.xcassets in Resources */,
 			);

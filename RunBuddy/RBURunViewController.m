@@ -183,6 +183,15 @@
                                                  userInfo:nil
                                                   repeats:YES];
     
+    NSURL *u = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/right.mp3", [[NSBundle mainBundle] resourcePath]]];
+    NSError *err;
+    audio = [[AVAudioPlayer alloc] initWithContentsOfURL:u error:&err];
+    audio.numberOfLoops = 0;
+    
+    NSURL *u2 = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/wrong.mp3", [[NSBundle mainBundle] resourcePath]]];
+    NSError *err2;
+    audio2 = [[AVAudioPlayer alloc] initWithContentsOfURL:u2 error:&err2];
+    audio2.numberOfLoops = 0;
     
     // Do any additional setup after loading the view.
 }
@@ -324,9 +333,11 @@
         
         if (_exceededMin == YES && _prevspeed >= _minspeed && _currspeed < _minspeed && _minspeed > 0) {
             [_xmintimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
+            [audio play];
         }
         if (_prevspeed <= _maxspeed && _currspeed > _maxspeed && _maxspeed > 0) {
             [_xmaxtimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
+            [audio2 play];
         }
         
     }

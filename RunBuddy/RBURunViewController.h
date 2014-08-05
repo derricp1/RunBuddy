@@ -10,9 +10,14 @@
 #import "RBURunHelper.h"
 #import "RBUMainViewController.h"
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
 @interface RBURunViewController : UIViewController {
     IBOutlet UIScrollView *scroller;
+    AVAudioPlayer *audio;
+    AVAudioPlayer *audio2;
 }
     - (void)setupstats;
     - (void)timerFired:(NSTimer*) t;
