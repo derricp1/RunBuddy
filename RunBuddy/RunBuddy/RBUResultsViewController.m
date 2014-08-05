@@ -248,7 +248,7 @@
 
     float barsize = _scwidth/_rh.totalsegments;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat width = screenRect.size.width;
+    //CGFloat width = screenRect.size.width;
     CGFloat height = screenRect.size.height;
     
     for (int i=0; i<_rh.totalsegments; i++) {

@@ -126,5 +126,27 @@
 {
     
 }
+
+- (IBAction)pushedDelay:(id)sender {
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Tooltips" message:@"Controls initial delay before timer starts" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [a show];
+}
+
+- (IBAction)pushedSegment:(id)sender {
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Tooltips" message:@"Controls multiples of time to make segments of" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [a show];
+}
+
+- (IBAction)pushedMax:(id)sender {
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Tooltips" message:@"Times above this speed will be recorded" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [a show];
+}
+
+- (IBAction)pushedMin:(id)sender {
+    UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Tooltips" message:@"Times below this speed will be recorded" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [a show];
+}
+
+
  
 @end
