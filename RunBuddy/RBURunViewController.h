@@ -65,6 +65,7 @@
     @property NSMutableArray *xmintimes;
 
     @property int willRot;
+    @property BOOL soundOn;
 
     @property (weak, nonatomic) IBOutlet UIButton *finishButton;
     @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

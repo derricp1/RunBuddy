@@ -150,10 +150,10 @@
     _totaldistance = _totaldistance/5280;
     
     NSString* tstring = [NSString stringWithFormat:@"%.02f", _maxsegdistance];
-    [_maxDistanceLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
+    [_maxDistanceLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" miles"]]];
     
     NSString* ttstring = [NSString stringWithFormat:@"%.02f", _totaldistance];
-    [_maxSpeedLabel setText:[ttstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
+    [_totalDistanceLabel setText:[ttstring stringByAppendingString:[NSString stringWithUTF8String:" miles"]]];
 }
 
 - (void)findmaxsegspeed
@@ -168,74 +168,6 @@
     
     NSString* tstring = [NSString stringWithFormat:@"%.02f", _maxsegspeed];
     [_maxSpeedLabel setText:[tstring stringByAppendingString:[NSString stringWithUTF8String:" mph"]]];
-}
-
-- (void)setuplevels
-{
-    /*
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat width = screenRect.size.width;
-    
-    CGRect f1 = _Bar1.frame;
-    f1.size.height = [_levels[0] intValue];
-    f1.origin.x = (0/10) * width;
-    f1.origin.y = f1.origin.y + (_maxbar - f1.size.height);
-    _Bar1.frame = f1;
-    
-    CGRect f2 = _Bar2.frame;
-    f2.size.height = [_levels[1] intValue];
-    f2.origin.x = (1/10) * width;
-    f2.origin.y = f2.origin.y + (_maxbar - f2.size.height);
-    _Bar2.frame = f2;
-    
-    CGRect f3 = _Bar3.frame;
-    f3.size.height = [_levels[2] intValue];
-    f3.origin.x = (2/10) * width;
-    f3.origin.y = f3.origin.y + (_maxbar - f3.size.height);
-    _Bar3.frame = f3;
-    
-    CGRect f4 = _Bar4.frame;
-    f4.size.height = [_levels[3] intValue];
-    f4.origin.x = (3/10) * width;
-    f4.origin.y = f4.origin.y + (_maxbar - f4.size.height);
-    _Bar4.frame = f4;
-    
-    CGRect f5 = _Bar5.frame;
-    f5.size.height = [_levels[4] intValue];
-    f5.origin.x = (4/10) * width;
-    f5.origin.y = f5.origin.y + (_maxbar - f5.size.height);
-    _Bar5.frame = f5;
-    
-    CGRect f6 = _Bar6.frame;
-    f6.size.height = [_levels[5] intValue];
-    f6.origin.x = (5/10) * width;
-    f6.origin.y = f6.origin.y + (_maxbar - f6.size.height);
-    _Bar6.frame = f6;
-    
-    CGRect f7 = _Bar7.frame;
-    f7.size.height = [_levels[6] intValue];
-    f7.origin.x = (6/10) * width;
-    f7.origin.y = f7.origin.y + (_maxbar - f7.size.height);
-    _Bar7.frame = f7;
-    
-    CGRect f8 = _Bar8.frame;
-    f8.size.height = [_levels[7] intValue];
-    f8.origin.x = (7/10) * width;
-    f8.origin.y = f8.origin.y + (_maxbar - f8.size.height);
-    _Bar8.frame = f8;
-    
-    CGRect f9 = _Bar9.frame;
-    f9.size.height = [_levels[8] intValue];
-    f9.origin.x = (8/10) * width;
-    f9.origin.y = f9.origin.y + (_maxbar - f9.size.height);
-    _Bar9.frame = f9;
-    
-    CGRect f10 = _Bar10.frame;
-    f10.size.height = [_levels[9] intValue];
-    f10.origin.x = (9/10) * width;
-    f10.origin.y = f10.origin.y + (_maxbar - f10.size.height);
-    _Bar10.frame = f10;
-     */
 }
 
 - (void)orientscreen

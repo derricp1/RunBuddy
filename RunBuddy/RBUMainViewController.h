@@ -26,6 +26,8 @@
 - (IBAction)unwindFromRun:(UIStoryboardSegue *)segue;
 - (IBAction)unwindFromResults:(UIStoryboardSegue *)segue;
 
+@property (weak, nonatomic) IBOutlet UISwitch *volumeSwitch;
+
 
 
 @end

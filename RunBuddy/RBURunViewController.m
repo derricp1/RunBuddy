@@ -333,11 +333,15 @@
         
         if (_exceededMin == YES && _prevspeed >= _minspeed && _currspeed < _minspeed && _minspeed > 0) {
             [_xmintimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
-            [audio play];
+            if (_soundOn == YES) {
+                [audio play];
+            }
         }
         if (_prevspeed <= _maxspeed && _currspeed > _maxspeed && _maxspeed > 0) {
             [_xmaxtimes addObject:(id)[NSNumber numberWithInt:(_currseconds)]];
-            [audio2 play];
+            if (_soundOn == YES) {
+                [audio2 play];
+            }
         }
         
     }

@@ -59,6 +59,7 @@
         dest.segmentsize = (int)_segmentsize;
         dest.delay = (int)_delay;
         dest.maxspeed = (int)_maxspeed;
+        dest.soundOn = _volumeSwitch.on;
     }
 }
 
@@ -75,13 +76,13 @@
 - (IBAction)SegmentTimeChanged:(id)sender {
     _segmentsize = self.SegmentSlider.value;
     int temp = floor(_segmentsize);
-    self.SegmentLabel.text = [NSString stringWithFormat:@"%i", temp];
+    self.SegmentLabel.text = [[NSString stringWithFormat:@"%i", temp] stringByAppendingString:@" seconds"];
     
 }
 - (IBAction)DelayChanged:(id)sender {
     _delay = self.DelaySlider.value;
     int temp = floor(_delay);
-    self.DelayLabel.text = [NSString stringWithFormat:@"%i", temp];
+    self.DelayLabel.text = [[NSString stringWithFormat:@"%i", temp] stringByAppendingString:@" seconds"];
 }
 
 - (IBAction)MaxSpeedChanged:(id)sender {
@@ -92,10 +93,17 @@
     }
     int temp = floor(_maxspeed);
     if (temp > 0) {
-        self.MaxLabel.text = [NSString stringWithFormat:@"%i", temp];
+        self.MaxLabel.text = [[NSString stringWithFormat:@"%i", temp] stringByAppendingString:@" mph"];
     }
     else {
         self.MaxLabel.text = @"OFF";
+    }
+    int temps = floor(_minspeed);
+    if (temps > 0) {
+        self.MinLabel.text = [[NSString stringWithFormat:@"%i", temps] stringByAppendingString:@" mph"];
+    }
+    else {
+        self.MinLabel.text = @"OFF";
     }
         
 }
@@ -107,7 +115,7 @@
     _minspeed = self.MinSlider.value;
     int temp = floor(_minspeed);
     if (temp > 0) {
-        self.MinLabel.text = [NSString stringWithFormat:@"%i", temp];
+        self.MinLabel.text = [[NSString stringWithFormat:@"%i", temp] stringByAppendingString:@" mph"];
     }
     else {
         self.MinLabel.text = @"OFF";
