@@ -172,6 +172,81 @@
 
 - (void)orientscreen
 {
+        CGRect f = [_maxSpeedWords frame];
+        int sizex = f.size.width;
+        int sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.1;
+        f.origin.y = (int) _scheight * 0.05;
+        [_maxSpeedWords setFrame:f];
+        
+        f = [_maxDistanceWords frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.1;
+        f.origin.y = (int) _scheight * 0.15;
+        [_maxDistanceWords setFrame:f];
+        
+        f = [_totalDistanceWords frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.1;
+        f.origin.y = (int) _scheight * 0.25;
+        [_totalDistanceWords setFrame:f];
+        
+        f = [_timeWords frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.1;
+        f.origin.y = (int) _scheight * 0.35;
+        [_timeWords setFrame:f];
+        
+        f = [_maxSpeedLabel frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.7;
+        f.origin.y = (int) _scheight * 0.05;
+        [_maxSpeedLabel setFrame:f];
+        
+        f = [_maxDistanceLabel frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.7;
+        f.origin.y = (int) _scheight * 0.15;
+        [_maxDistanceLabel setFrame:f];
+        
+        f = [_totalDistanceLabel frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.7;
+        f.origin.y = (int) _scheight * 0.25;
+        [_totalDistanceLabel setFrame:f];
+        
+        f = [_timeLabel frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth * 0.7;
+        f.origin.y = (int) _scheight * 0.35;
+        [_timeLabel setFrame:f];
+    
+        f = [_doneButton frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth/2 -sizex/2;
+        if ([self getOrientation] == 0)
+            f.origin.y = (int) _scheight * 0.4;
+        else
+            f.origin.y = (int) _scheight * 0.5;
+        [_doneButton setFrame:f];
+    
+        f = [_graphWords frame];
+        sizex = f.size.width;
+        sizey = f.size.height;
+        f.origin.x = (int) _scwidth/2 -sizex/2;
+        if ([self getOrientation] == 0)
+            f.origin.y = (int) _scheight * 0.6;
+        else
+            f.origin.y = (int) _scheight * 0.7;
+        [_graphWords setFrame:f];
     
 }
 

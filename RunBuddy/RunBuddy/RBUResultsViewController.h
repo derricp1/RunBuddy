@@ -24,6 +24,11 @@
     @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
     @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
+    @property (weak, nonatomic) IBOutlet UILabel *maxSpeedWords;
+    @property (weak, nonatomic) IBOutlet UILabel *maxDistanceWords;
+    @property (weak, nonatomic) IBOutlet UILabel *totalDistanceWords;
+    @property (weak, nonatomic) IBOutlet UILabel *timeWords;
+    @property (weak, nonatomic) IBOutlet UILabel *graphWords;
 
 
 @end
